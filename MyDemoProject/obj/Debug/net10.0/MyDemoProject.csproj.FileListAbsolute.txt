@@ -31,3 +31,4 @@ C:/Users/sh_ksenya/MyDemoProject/obj/Debug/net10.0/ref/MyDemoProject.dll
 /Users/sh_ksenya/Documents/Progect c#/bin/Debug/MyDemoProject.runtimeconfig.json
 /Users/sh_ksenya/Documents/Progect c#/bin/Debug/MyDemoProject.dll
 /Users/sh_ksenya/Documents/Progect c#/bin/Debug/MyDemoProject.pdb
+/Users/sh_ksenya/Documents/Progect c#/MyDemoProject/obj/Debug/net10.0/MyDemoProject.sourcelink.json

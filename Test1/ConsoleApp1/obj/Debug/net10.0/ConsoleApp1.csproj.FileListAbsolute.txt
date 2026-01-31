@@ -17,3 +17,4 @@
 /Users/sh_ksenya/Documents/Progect c#/bin/Debug/ConsoleApp1.runtimeconfig.json
 /Users/sh_ksenya/Documents/Progect c#/bin/Debug/ConsoleApp1.dll
 /Users/sh_ksenya/Documents/Progect c#/bin/Debug/ConsoleApp1.pdb
+/Users/sh_ksenya/Documents/Progect c#/Test1/ConsoleApp1/obj/Debug/net10.0/ConsoleApp1.sourcelink.json
