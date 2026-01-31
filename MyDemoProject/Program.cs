@@ -433,31 +433,31 @@ using System;
 //     }
 // }
 
-using System;
+// using System;
 
-enum SomeEnum
-{
-    Abcde,
-    Fghij,
-    Klmno,
-    Pqrst,
-    Uvwxy
-}
+// enum SomeEnum
+// {
+//     Abcde,
+//     Fghij,
+//     Klmno,
+//     Pqrst,
+//     Uvwxy
+// }
 
-class Program
-{
-    static void Main()
-    {
-        int n = int.Parse(Console.ReadLine()); // число от 0 до 4
+// class Program
+// {
+//     static void Main()
+//     {
+//         int n = int.Parse(Console.ReadLine()); // число от 0 до 4
 
-        string result = "";
+//         string result = "";
 
-        foreach (SomeEnum value in Enum.GetValues(typeof(SomeEnum)))
-        {
-            string name = value.ToString(); // "Abcde", "Fghij" и т.д.
-            result += name[n];              // берём символ с позиции n
-        }
+//         foreach (SomeEnum value in Enum.GetValues(typeof(SomeEnum)))
+//         {
+//             string name = value.ToString(); // "Abcde", "Fghij" и т.д.
+//             result += name[n];              // берём символ с позиции n
+//         }
 
-        Console.WriteLine(result);
-    }
-}
+//         Console.WriteLine(result);
+//     }
+// }
