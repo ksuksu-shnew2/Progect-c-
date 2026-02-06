@@ -5,8 +5,7 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDemoProject", "MyDemoProject\MyDemoProject.csproj", "{922C0DCD-CC55-A501-5A10-726FC4B6BD90}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test1", "Test1", "{E62EC963-C6CD-4E20-543E-AF41AB435F95}"
-EndProject
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Test1\ConsoleApp1\ConsoleApp1.csproj", "{1407FA8C-261E-4AC0-94CF-A6B010F9DF49}"
 EndProject
 Global
@@ -47,9 +46,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{1407FA8C-261E-4AC0-94CF-A6B010F9DF49} = {E62EC963-C6CD-4E20-543E-AF41AB435F95}
-	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolutionEndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0BD0FCA-2830-4100-B60B-3B1E3CA10492}
 	EndGlobalSection
