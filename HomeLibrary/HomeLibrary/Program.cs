@@ -1,2 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System.Threading.Tasks.Dataflow;
+
+Console.WriteLine("Введите название книги: ");
+string NameBooks = Console.ReadLine(); 
+ Console.WriteLine("Введите автора книги:");
+string AutorBooks = Console.ReadLine(); 
+ Console.WriteLine("Введите год издания книги:");
+ string Year = Console.ReadLine(); 
+Console.WriteLine("Введите ISBN");
+string ISBN = Console.ReadLine(); 
+
+Console.WriteLine("\nНазвание книги: "+ NameBooks);
+Console.WriteLine("Автор книги: "+ AutorBooks);
+Console.WriteLine("Год издания: "+ Year);
+Console.WriteLine("ISBN: "+ ISBN);
+
