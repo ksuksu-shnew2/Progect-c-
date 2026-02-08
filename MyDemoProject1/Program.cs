@@ -117,6 +117,15 @@
 // Используйте все варианты изученные нами на теоретическом уроке
 // Сколько способов вы нашли?
  using System;
+using System.ComponentModel;
+using System.ComponentModel.Design.Serialization;
+using System.Data.SqlTypes;
+using System.Diagnostics;
+using System.IO.Pipelines;
+using System.Reflection;
+using System.Reflection.Metadata;
+using System.Security;
+using System.Threading.Channels;
 // class Program
 // {
 //     static void Main()
@@ -132,7 +141,7 @@
 //       Console.WriteLine("string :"+c);
 //       Console.WriteLine("char :" +d);
 //       Console.WriteLine("object :" +e);
-        
+
 //     }
 // }
 
@@ -151,7 +160,7 @@
 //       Console.WriteLine("var string = " + c +"; Type: " + c.GetType().Name);
 //       Console.WriteLine("var char = " + d +"; Type: " + d.GetType().Name);
 //       Console.WriteLine("var bool = " + e +"; Type: " + e.GetType().Name);
-        
+
 //     }
 // }
 
@@ -175,7 +184,7 @@
 //       Console.WriteLine(d + "(" + d.GetType().Name + ")-> " + h + "(" + h.GetType().Name + ")");
 //       Console.WriteLine(e + "(" + e.GetType().Name + ")-> " + j + "(" + j.GetType().Name + ")");
 //       Console.WriteLine(a + "(" + a.GetType().Name + ")-> " + o + "(" + o.GetType().Name + ")");
-        
+
 //     }
 // }
 
@@ -194,14 +203,14 @@
 //     //   c="Test";
 //     //   d='V';
 //     //   e=true;
-   
+
 
 //       Console.WriteLine("a: " + a);
 //       Console.WriteLine("b: " + b);
 //       Console.WriteLine("c: " + c);
 //       Console.WriteLine("d: " + d);
 //       Console.WriteLine("e: " + e);
-        
+
 //     }
 // }
 
@@ -224,7 +233,7 @@
 //         // string d = "Символ: '\'' - Одинарная кавычка";
 //         // string e = "Символ: '\"' - Двойная кавычка";
 
-   
+
 
 //      Console.WriteLine($"Символ: '\n' (код {(int)a}) - Новая строка");
 //       Console.WriteLine($"Символ: '\t' (код {(int)b})  - Табуляция");
@@ -259,7 +268,7 @@
 
 //         //c=30;
 //         //b=20;
-        
+
 
 //     Console.WriteLine("внешняя = "+a);
 //     }
@@ -288,7 +297,7 @@
 //       Console.WriteLine(a + "(" + a.GetType().Name + ")-> " + h + "(" + h.GetType().Name + ")");
 //       Console.WriteLine(a + "(" + a.GetType().Name + ")-> " + k + "(" + k.GetType().Name + ")");
 //       Console.WriteLine(e + "(" + e.GetType().Name + ")-> " + o + "(" + o.GetType().Name + ")");
-        
+
 //     }
 // }
 
@@ -296,7 +305,7 @@
 // {
 //     static void Main()
 //     {
-      
+
 //        //long b = 12300000L;
 //        float c = 1.5F;
 //       decimal d = 100.289M;
@@ -314,7 +323,7 @@
 //       Console.WriteLine(d + ":" + d.GetType().Name);
 //       Console.WriteLine(e + ":" + e.GetType().Name);
 //       Console.WriteLine(a + ":" + a.GetType().Name);
-        
+
 //     }
 // }
 
@@ -322,7 +331,7 @@
 // {
 //     static void Main()
 //     {
-      
+
 //       string a= "Первый текст";
 //       //string b= "Второй текст";
 //       string c= "текст";
@@ -342,7 +351,362 @@
 //       Console.WriteLine(c + " Длина: " + c.Length+ " Символ: " + c1);
 //       Console.WriteLine(c + " Длина: " + c.Length+ " Символ: " + c2);
 //       Console.WriteLine(c + " Длина: " + c.Length+ " Символ: " + c3);
+
+//     }
+// }
+
+// 
+
+// int a = 10;
+// int b = 100;
+// int c = 1000;
+// Console.WriteLine(a < b && b > a);
+// Console.WriteLine(c > a && a < c);
+// //  b = 100000;
+// //  a = 10000;
+// Console.WriteLine(!(b > c) && !(c < a));
+
+// bool result = FirstEqualsSecond(10, 10) | FirstGreaterSecond(3, 2) | FirstLessSecond(2, 3);
+// bool FirstEqualsSecond(int x, int y) {
+// if (x != y) { Console.WriteLine("X НЕ равно Y"); }
+// else { Console.WriteLine("X равно Y"); }
+// return x == y;
+// }
+// bool FirstGreaterSecond(int x, int y) {
+// if (x > y) { Console.WriteLine("X больше Y"); }
+// else { Console.WriteLine("X меньше или равно Y"); }
+// return x > y;
+// }
+// bool FirstLessSecond(int x, int y) {
+// if (x < y) { Console.WriteLine("X меньше Y"); }
+// else { Console.WriteLine("X больше или равно Y"); }
+// return x < y;
+// }
+
+// object someValue = 42;
+// switch (someValue)
+// {
+// case int i when i == 10:
+// Console.WriteLine($"someValue это целое число со значением: {i}");
+// break;
+// case int i when i > 20:
+// Console.WriteLine($"someValue это целое число 4 со значением: {i}");
+// break;
+// case double i:
+// Console.WriteLine($"someValue это вещественное число со значением: {i}");
+// break;
+// default:
+// Console.WriteLine("Тип someValue не определён");
+// break;
+// }
+
+// object someValue = 5;
+// switch (someValue)
+// {
+// case int i when i > 10:
+// case short j when j > 10:
+// case long k when k > 10:
+// Console.WriteLine($"someValue больше 10: {someValue}");
+// break;
+// }
+
+// Random rnd = new();
+// int value = rnd.Next(6, 15);
+// switch (value)
+// {
+// case 6:
+// Console.WriteLine($"карта - шестерка: значение {value}");
+// break;
+// case 7:
+// Console.WriteLine($"карта - семерка: значение {value}");
+// break;
+// case 8:
+// Console.WriteLine($"карта - восьмерка: значение {value}");
+// break;
+// case 9:
+// Console.WriteLine($"карта - девятка: значение {value}");
+// break;
+// case 10:
+// Console.WriteLine($"карта - десятка: значение {value}");
+// break;
+// case 11:
+// Console.WriteLine($"карта - валет: значение {value}");
+// break;
+// case 12:
+// Console.WriteLine($"карта - дама: значение {value}");
+// break;
+// case 13:
+// Console.WriteLine($"карта - король: значение {value}");
+// break;
+// case 14:
+// Console.WriteLine($"карта - туз: значение {value}");
+// break;
+// default:
+// Console.WriteLine("Такой карты нет");
+// break;
+// }
+
+// Random rnd = new();
+// int value = rnd.Next(6, 15);
+// switch (value)
+// {
+// case 6:
+// case 7:
+// case 8:
+// case 9:
+// case 10:
+// Console.WriteLine($"карта - обычная: значение {value}");
+// break;
+// case 11:
+// case 12:
+// case 13:
+// Console.WriteLine($"карта - фигура: значение {value}");
+// break;
+// case 14:
+// Console.WriteLine($"карта - туз: значение {value}");
+// break;
+// default:
+// Console.WriteLine("Такой карты нет");
+// break;
+// }
+
+// PrintTheType("Ы");
+// PrintTheType(2.0F);
+// PrintTheType(10.2M);
+// PrintTheType(11L);
+
+// static void PrintTheType(object value)
+// {
+// switch (value)
+//   {
+//     case string i:
+//     Console.WriteLine($"value это string со значением: {i}");
+//     break;
+//     case float i:
+//     Console.WriteLine($"value это float со значением: {i}");
+//     break;
+//     case decimal i:
+//     Console.WriteLine($"value это decimal со значением: {i}");
+//     break;
+//     case long i:
+//     Console.WriteLine($"value это long со значением: {i}");
+//     break;
+//   }
+// }
+
+// Random rnd = new();
+// int value = rnd.Next(6, 15);
+// Console.WriteLine(value);
+// string carta = value switch
+// {
+//  6 => "шестерка",
+//  7 => "семерка",
+//  8 => "восьмерка",
+//  9 => "девятка",
+//  10 => "десятка",
+//  11 => "валет",
+//  12 => "дама",
+//  13 => "король",
+//  14 => "туз",
+//   _ => "Неизвестная карта",
+// };
+// Console.WriteLine(carta);
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         bool a=true;
+//         Console.WriteLine(a);
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         int firstNumber = 15;
+//         int secondNumber = 10;
+
+//         bool a;
+//         a = firstNumber == secondNumber;
+//         Console.WriteLine(firstNumber +" == " + secondNumber + ": "+ a);
+//         a = firstNumber != secondNumber;
+//         Console.WriteLine(firstNumber +" != " + secondNumber + ": "+ a);
+//         a = firstNumber >= secondNumber;
+//         Console.WriteLine(firstNumber +" >= " + secondNumber + ": "+ a);
+//         a = firstNumber <= secondNumber;
+//         Console.WriteLine(firstNumber +" <= " + secondNumber + ": "+ a);
+//         a = firstNumber < secondNumber;
+//         Console.WriteLine(firstNumber +" < " + secondNumber + ": "+ a);
+//         a = firstNumber > secondNumber;
+//         Console.WriteLine(firstNumber +" > " + secondNumber + ": "+ a);
+
+
+//     }
+// }
+
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         bool originalValue = true;
+//         originalValue=!(originalValue);
+//         Console.WriteLine(originalValue);
+
+//         // Ваш код здесь
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу, которая использует тернарный оператор (?:) для выбора максимального значения из двух чисел и выводит результат.
+//         //
+//         // **Входные данные**: Два целых числа (заданы в коде как переменные)
+//         //
+//         // **Выходные данные**: Максимальное значение из двух чисел
+//         //
+//         // **Ограничения**: Используйте только тернарный оператор (?:) для выбора значения
+//         //
+//         // **Примеры**:
+//         // Числа: 8 и 12
+//         // Максимальное значение: 12
+//         //
+//         // Числа: 15 и 9
+//         // Максимальное значение: 15
+
+//         int firstNumber = 8;
+//         int secondNumber = 12;
+//         int res;
+
+//         res = firstNumber>secondNumber?firstNumber:secondNumber;
+//         Console.WriteLine(res);
+
+
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу, которая использует бинарные логические операции (&, |, ^) для работы с двумя булевыми значениями и выводит результаты всех операций.
+//         // **Входные данные**: Два булевых значения (заданы в коде как переменные)
+//         // **Выходные данные**: Результаты логических операций AND (&), OR (|) и XOR (^)
+//         // **Ограничения**: Используйте только бинарные логические операторы (&, |, ^)
         
+//         bool a = true;
+//         bool b = false;
+
+//         bool result;
+
+//         result = a&b;
+//         Console.WriteLine("Результат AND (&):" + result);
+//         result = a|b;
+//         Console.WriteLine("Результат OR (|):" + result);
+//         result = a^b;
+//         Console.WriteLine("Результат XOR (^):" + result);
+
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу, которая использует условные операторы (&& и ||) для проверки двух булевых условий и демонстрирует сокращённое вычисление.
+//         // **Входные данные**: Два булевых значения (заданы в коде как переменные)
+//         // **Выходные данные**: Результаты логических операций && и || с демонстрацией сокращённого вычисления
+//         // **Ограничения**: Используйте только условные операторы && и ||
+        
+//         bool a = true;
+//         bool b = false;
+
+//         bool result;
+
+//         result = a&&b;
+//         Console.WriteLine("Результат (&&):" + result);
+//         result = a||b;
+//         Console.WriteLine("Результат (||):" + result);
+//     }
+// }
+
+
+// int dayNumber = 3;
+// switch (dayNumber)
+// {
+// case 1:
+// Console.WriteLine("Понедельник");
+// break;
+// case 2:
+// Console.WriteLine("Вторник");
+// break;
+// case 3:
+// Console.WriteLine("Среда");
+// break;
+// case 4:
+// Console.WriteLine("Четверг");
+// break;
+// case 5:
+// Console.WriteLine("Пятница");
+// break;
+// case 6:
+// Console.WriteLine("Суббота");
+// break;
+// case 7:
+// Console.WriteLine($"Воскресенье");
+// break;
+// default:
+// Console.WriteLine("Неизвестный день");
+// break;
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         int number = 8;
+//         int res;
+//         res=number%2;
+//       if(res==0)
+//       {
+//       Console.WriteLine("Число четное");
+//       }
+      
+//       else
+//       {
+//        Console.WriteLine("Число нечетное"); 
+//       }
+    
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         object value = 42.4;
+
+        
+// switch (value)
+//   {
+//     case int i:
+//     Console.WriteLine($"Это целое число: {i}");
+//     break;
+//     case string i:
+//     Console.WriteLine($"Это строка: {i}");
+//     break;
+//     case decimal i:
+//     Console.WriteLine($"Это decimal: {i}");
+//     break;
+//     default:
+//     Console.WriteLine("Неизвестный тип"); 
+//     break;
+//   }
+      
 //     }
 // }
 
@@ -350,21 +714,25 @@ class Program
 {
     static void Main()
     {
+        // **Описание**: Создайте программу, которая использует оператор if-else-if для классификации числа по диапазонам и выводит соответствующую категорию.
+        // **Входные данные**: Целое число (задано в коде как переменная)
+        // **Выходные данные**: Сообщение о категории числа
+        // **Ограничения**: Используйте только конструкцию if-else-if с операторами сравнения
 
-      char a = '\u0041';
-      char b = '\u0048';
-      char d = '\u0065';
-      char r = '\u006C';
-      char g = '\u006F';
+        int number = 125;
 
-
-        // Выводим каждый символ и его Unicode-код
-        Console.WriteLine($"Символ: '{a}' - (Unicode: \\u0041)");
-        Console.WriteLine($"Символ: '{b}' - (Unicode: \\u0048)");
-        Console.WriteLine($"Символ: '{d}' - (Unicode: \\u0065)");
-        Console.WriteLine($"Символ: '{r}' - (Unicode: \\u006C)");
-        Console.WriteLine($"Символ: '{g}' - (Unicode: \\u006F)");
-    
+        if (number <= 50)
+       {
+       Console.WriteLine("Малое число");
+       }
+       else if ((number>50) & (number<100)) 
+       {
+       Console.WriteLine("Среднее число");
+       }
+       else 
+       {
+       Console.WriteLine("Большое число");
+       }
         
     }
 }
