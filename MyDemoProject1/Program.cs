@@ -710,29 +710,290 @@ using System.Threading.Channels;
 //     }
 // }
 
-class Program
-{
-    static void Main()
-    {
-        // **Описание**: Создайте программу, которая использует оператор if-else-if для классификации числа по диапазонам и выводит соответствующую категорию.
-        // **Входные данные**: Целое число (задано в коде как переменная)
-        // **Выходные данные**: Сообщение о категории числа
-        // **Ограничения**: Используйте только конструкцию if-else-if с операторами сравнения
+// //}
 
-        int number = 125;
+// char[] array = new char[3];
 
-        if (number <= 50)
-       {
-       Console.WriteLine("Малое число");
-       }
-       else if ((number>50) & (number<100)) 
-       {
-       Console.WriteLine("Среднее число");
-       }
-       else 
-       {
-       Console.WriteLine("Большое число");
-       }
+// array[0] = 'a';
+// array[1] = 'b';
+// array[2] = 'r';
+
+// var array5 = new[] {"a","b","c","d","e","f","g"};
+
+// Console.WriteLine("третий индекс v1: "+array5[3]);
+
+// Console.WriteLine("второй с конца v2: "+array5[^2]);
+
+// string penultimate = array5[3];
+
+// Console.WriteLine("третий индекс: "+penultimate);
+// penultimate = array5[^2];
+// Console.WriteLine("второй с конца: "+penultimate);
+
+
+// var strings = new string[] { "a", "b", "c", "d", "e", "f", "g" };
+// // Создайте из массива строк новый массив, который будет содержать все
+// // элементы исходного массива начиная с третьего элемента
+// string[] str1 = strings[2..];
+// // Создайте из массива строк новый массив, который будет содержать элементы
+// // исходного массива начиная с четвёртого считая с конца массива
+// string[] str2 = strings[^4..];
+// // Создайте из массива строк новый массив, который будет содержать элементы
+// // исходного массива со второго по четвёртый элементы включительно
+// string[] str3 = strings[1..4];
+// // Для последнего задания объявите переменную соответствующего типа которая
+// // хранит диапазон из предыдущего задания
+// Range range = 1..4;
+
+
+// // Объявите и создайте прямоугольный целочисленный массив размером 3 на 3
+// int[,] ints = new int[3, 3];
+// // Выведете на печать элемент из второй по счёту строки и второй по счёту колонки
+// Console.WriteLine(ints[1, 1]);
+// // Объявите и инициализируйте прямоугольный массив символов
+// // состоящий из 4 строк и 2 колонок
+// char[,] chars = new char[4, 2]
+// {
+// { 'a', 'b'},
+// { 'a', 'b'},
+// { 'a', 'b'},
+// { 'a', 'b'},
+// };
+
+// Console.WriteLine("массив "+chars);
+
+//Dictionary<string, char> dictionary4 = new Dictionary<string, char>();
+
+// Dictionary<string, char> dictionary4 = new()
+// {
+// { "а", '\u0430' },
+// { "б", '\u0431' },
+// { "в", '\u0432' },
+// { "г", '\u0433' },
+// { "д", '\u0434' },
+// };
+
+// bool success = dictionary4.TryAdd("э", '\u044D' );
+// success = dictionary4.TryAdd("я", '\u044F' );
+
+// bool contains = dictionary4.ContainsValue('\u044E');
+
+// if (contains == false)
+// {
+//   dictionary4.Add("ю", '\u044E');
+// }
+
+// int count = dictionary4.Count;
+
+// Console.WriteLine(count);
+
+// //dictionary4.Clear();
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу для работы с двумерным массивом чисел
+//         // **Входные данные**: Двумерный массив 3x3 с предустановленными значениями
+//         // **Выходные данные**: Значение элемента из центра массива (позиция [1,1])
+//         // **Ограничения**: Массив имеет размер 3x3
+//         // **Примеры**:
+//         // Input: массив {{1,2,3},{4,5,6},{7,8,9}}
+//         // Output: 5
+//         // Input: массив {{10,20,30},{40,50,60},{70,80,90}}
+//         // Output: 50
         
-    }
-}
+//         int[,] matrix = new int[3,3]
+//         {
+//             {1, 2, 3},
+//             {4, 5, 6},
+//             {7, 8, 9}
+//         };
+
+//         int pos = matrix[1,1];
+//         Console.WriteLine(pos);
+        
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         var queue = new Queue<string>();
+//         queue.Enqueue("первый");
+//         queue.Enqueue("второй");
+//         queue.Enqueue("третий");
+        
+//         Console.WriteLine(queue.Peek());
+//     }
+// }
+
+using System.Collections.Generic;
+
+// **Описание**: Создайте программу для работы со словарем товаров и их цен
+// **Входные данные**: Предустановленный словарь Dictionary<string, int> с тремя товарами и их ценами
+// **Выходные данные**: Цена товара "Хлеб" из словаря
+// **Ограничения**: Словарь содержит ровно 3 товара с ценами
+// **Примеры**:
+// Input: словарь {"Хлеб": 50, "Молоко": 80, "Масло": 120}
+// Output: 50
+// Input: словарь {"Хлеб": 45, "Сыр": 200, "Йогурт": 60}
+// Output: 45
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         Dictionary<string, int> dictionary = new()
+//             {
+//             { "хлеб", 50 },
+//             { "молоко", 80 },
+//             { "сыр", 150 },
+//             };
+//             int value = dictionary["хлеб"];
+//             Console.WriteLine(value);
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         int[][] matrix = new int[3][]
+//         {
+//            new int[] {1},
+//            new int[] {4, 5},
+//            new int[] {7, 8, 9}
+//         };
+
+//         int count = matrix[2].Length;
+//         Console.WriteLine(count);  
+//     }
+// }
+
+using System.Collections.Generic;
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу для работы с множеством HashSet строк
+//         // **Входные данные**: Предустановленное множество HashSet<string> с тремя городами
+//         // **Выходные данные**: Результат проверки наличия города "Москва" в множестве (true или false)
+//         // **Ограничения**: Множество содержит ровно 3 города
+//         // **Примеры**:
+//         // Input: множество {"Москва", "Санкт-Петербург", "Казань"}
+//         // Output: true
+//         // Input: множество {"Новосибирск", "Екатеринбург", "Нижний Новгород"}
+//         // Output: false
+        
+//         var set = new HashSet<string> { "Москва", "Санкт-Петербург", "Казань"};
+
+//         bool res = set.Contains("Москва");
+//         Console.WriteLine(res); 
+
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу для работы с индексами и диапазонами массива
+//         // **Входные данные**: Предустановленный массив из 6 целых чисел
+//         // **Выходные данные**: Элемент массива, находящийся на второй позиции с конца
+//         // **Ограничения**: Массив содержит ровно 6 элементов
+//         // **Примеры**:
+//         // Input: массив {10, 20, 30, 40, 50, 60}
+//         // Output: 50
+//         // Input: массив {1, 3, 5, 7, 9, 11}
+//         // Output: 9
+        
+//         int[] numbers = {10, 20, 30, 40, 50, 60};
+        
+//         int res = numbers[^2];
+//         Console.WriteLine(res); 
+        
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу для работы со списком List и его конвертацией в массив
+//         // **Входные данные**: Предустановленный список List<string> с четырьмя элементами
+//         // **Выходные данные**: Массив строк, полученный из списка методом ToArray
+//         // **Ограничения**: Список содержит ровно 4 строковых элемента
+        
+//         List<string> list = new List<string>() { "a", "b", "c","d" };
+
+//         string[] array = list.ToArray(); 
+
+//         for (int i = 0; i < array.Length; i++)
+//         {
+//             Console.WriteLine(array[i]);
+//         }
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу для работы со стеком целых чисел
+//         // **Входные данные**: Предустановленный стек Stack<int> с четырьмя элементами
+//         // **Выходные данные**: Количество элементов в стеке после удаления одного элемента
+//         // **Ограничения**: Стек содержит ровно 4 элемента
+//         // **Примеры**:
+//         // Input: стек {10, 20, 30, 40}
+//         // Output: 3
+//         // Input: стек {5, 15, 25, 35}
+//         // Output: 3
+        
+//         var stack = new Stack<int>();
+//         stack.Push(1);
+//         stack.Push(2);
+//         stack.Push(3);
+//         stack.Push(4);
+//         stack.Pop();
+        
+//         Console.WriteLine (stack.Count);
+        
+//     }
+// }
+
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         var set1 = new HashSet<string> { "яблоко", "банан"};
+//         var set2 = new HashSet<string> { "апельсин", "груша", "киви"};
+
+//         //HashSet<string> resultSet = [];
+
+//         //resultSet.UnionWith(set1);
+//         set1.UnionWith(set2);
+
+//         Console.WriteLine (set1.Count);
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         SortedDictionary<string, int> dictionary = new()
+//             {
+//                 {"Зебра", 100},
+//                 {"Антилопа", 50},
+//                 {"Слон", 200},
+//             };
+//       //  dictionary.Sort();
+//        string first= dictionary.Keys.First();
+//        Console.WriteLine(first);
+
+//     }
+// }
