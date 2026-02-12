@@ -997,3 +997,33 @@ using System.Collections.Generic;
 
 //     }
 // }
+
+// int count =0;
+// while (count<20)
+// {
+//   count++;
+//   if (count%2==0)
+//   {
+//     continue;
+//   }
+//   else if (count%17==0)
+//   {
+//     break;
+//   }
+//   Console.WriteLine(count);
+
+// }
+// Console.WriteLine("Цикл завершен");
+
+int count = 0;
+while (count < 20) {
+count++;
+if (count % 17 == 0) {
+break;
+}
+if (count % 2 == 0) {
+continue;
+}
+Console.WriteLine(count);
+}
+Console.WriteLine("Цикл закончен.");
