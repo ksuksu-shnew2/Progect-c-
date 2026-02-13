@@ -34,52 +34,64 @@ using System;
 
 //Console.WriteLine("Введите значение: ");
 
-string[,] matrix = new string[5,4];
+// string[,] matrix = new string[5,4];
 
-for (int i = 0; i < matrix.GetLength(0); i++)
+// for (int i = 0; i < matrix.GetLength(0); i++)
 
-        {
-            Console.WriteLine($"Книга №{i+1}");
+//         {
+//             Console.WriteLine($"Книга №{i+1}");
 
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                    {
-                        string text;
-                        switch (j)
-                        {
-                        case 0:
-                        text = "Введите название книги";
-                        break;
-                        case 1:
-                        text = "Введите автора книги:";
-                        break;
-                        case 2:
-                        text = "Введите год издания книги: ";
-                        break;
-                        case 3:
-                        text = "Введите ISBN";
-                        break;
-                        default:
-                        text ="Выйти";
-                        break;
-                        }
+//                 for (int j = 0; j < matrix.GetLength(1); j++)
+//                     {
+//                         string text;
+//                         switch (j)
+//                         {
+//                         case 0:
+//                         text = "Введите название книги";
+//                         break;
+//                         case 1:
+//                         text = "Введите автора книги:";
+//                         break;
+//                         case 2:
+//                         text = "Введите год издания книги: ";
+//                         break;
+//                         case 3:
+//                         text = "Введите ISBN";
+//                         break;
+//                         default:
+//                         text ="Выйти";
+//                         break;
+//                         }
 
-                        Console.Write($"{text}: ");
+//                         Console.Write($"{text}: ");
                       
-                            matrix[i, j] = Console.ReadLine();                    
+//                             matrix[i, j] = Console.ReadLine();                    
 
-                    }
-        }
+//                     }
+//         }
 
-        Console.WriteLine("\nМассив получился такой:");
+//         Console.WriteLine("\nМассив получился такой:");
 
-        // Вывод
-        for (int i = 0; i < matrix.GetLength(0); i++)
-        {
-            for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-                Console.Write(matrix[i, j] + "\t");
-            }
-            Console.WriteLine();
-        }
+//         // Вывод
+//         for (int i = 0; i < matrix.GetLength(0); i++)
+//         {
+//             for (int j = 0; j < matrix.GetLength(1); j++)
+//             {
+//                 Console.Write(matrix[i, j] + "\t");
+//             }
+//             Console.WriteLine();
+//         }
+
+while (true)
+{
+Console.WriteLine("Введите название книги: ");
+string NameBooks = Console.ReadLine(); 
+ Console.WriteLine("Введите автора книги:");
+string AutorBooks = Console.ReadLine(); 
+ Console.WriteLine("Введите год издания книги: ");
+int Year = int.Parse(Console.ReadLine()); 
+Console.WriteLine("Введите ISBN");
+string ISBN = Console.ReadLine(); 
+}
 
 
