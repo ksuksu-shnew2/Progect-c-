@@ -85,34 +85,7 @@ using System.ComponentModel;
 //             Console.WriteLine();
 //         }
 
-
-
-while (true)
-{
-    Console.WriteLine("\n1. Ввести данные по книге");
-    Console.WriteLine("0. Выход\n");
-    Console.WriteLine("Ваш выбор: ");
-
-
-    String userInput = Console.ReadLine();
-
-    if(string.IsNullOrWhiteSpace(userInput)
-    ||!int.TryParse(userInput,out int inputChoice)
-    || inputChoice<0
-    || inputChoice>1)
-    {
-        Console.WriteLine("Неправильный ввод! Введите число от 0 до 1");
-        continue;
-    }
-    else if (inputChoice==0) {return;}
-    
-    Console.WriteLine("Вы молодец!");
-    break;
-    
-}
-
- 
-           Console.WriteLine("Введите значение: ");
+    Console.WriteLine("Введите значение данных: ");
 
 string[,] matrix = new string[5,4];
 
@@ -161,6 +134,26 @@ for (int i = 0; i < matrix.GetLength(0); i++)
             }
             Console.WriteLine();
         }
+
+while (true)
+{
+    Console.WriteLine("\n1. Ищем данные");
+    Console.WriteLine("0. Выход\n");
+    Console.WriteLine("Ваш выбор: ");
+
+
+    String userInput = Console.ReadLine();
+
+    if(string.IsNullOrWhiteSpace(userInput)
+    ||!int.TryParse(userInput,out int inputChoice)
+    || inputChoice<0
+    || inputChoice>1)
+    {
+        Console.WriteLine("Неправильный ввод! Введите число от 0 до 1");
+        continue;
+    }
+    else if (inputChoice==0) {return;}
+    
 
         Console.WriteLine("Введите название книги которую ищем: ");
         string NameBooksSearch = Console.ReadLine(); 
@@ -216,7 +209,7 @@ for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 Console.WriteLine("Значение не найдено в этой колонке");
             }
-        Console.WriteLine("Введите год издания книги которую ищем: ");
+        Console.WriteLine("Введите ISBN книги которую ищем: ");
         string ISBNSearch = Console.ReadLine(); 
         bool found3 = false;
 
@@ -234,3 +227,4 @@ for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 Console.WriteLine("Значение не найдено в этой колонке");
             }
+}
