@@ -104,12 +104,12 @@ while (true)
         Console.WriteLine("Неправильный ввод! Введите число от 0 до 1");
         continue;
     }
-    else if (inputChoice==0) {break;}
+    else if (inputChoice==0) {return;}
     
-    // Console.WriteLine("Вы молодец!");
-    // break;
+    Console.WriteLine("Вы молодец!");
+    break;
     
-
+}
 
  
            Console.WriteLine("Введите значение: ");
@@ -234,5 +234,3 @@ for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 Console.WriteLine("Значение не найдено в этой колонке");
             }
-          break;
-}
