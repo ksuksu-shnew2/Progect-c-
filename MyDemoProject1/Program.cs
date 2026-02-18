@@ -1372,7 +1372,31 @@ using System.Globalization;
 //     }
 // }
 
+var test = new Car("Lada","2101");
+var test2 = new Car() {Brand = "Audi", Model = "Q5"};
+class Car
+{
 
+  public Car (string brand,string model): this()
+  {
+    Brand = brand;
+    Model = model;
+  }
+
+  static Car ()
+  {
+    numberOfWeels = 4;
+  }
+
+  private Car (double Capacity): this(3.14)
+  {
+    _engineCapacity = Capacity;
+  }
+  public string Brand;
+  public string Model;
+  private double _engineCapacity;
+  static int numberOfWeels;
+}
 
 
 
