@@ -1372,32 +1372,104 @@ using System.Globalization;
 //     }
 // }
 
-var test = new Car("Lada","2101");
-var test2 = new Car() {Brand = "Audi", Model = "Q5"};
-class Car
+// var test = new Car("Lada","2101");
+// var test2 = new Car() {Brand = "Audi", Model = "Q5"};
+// class Car
+// {
+
+//   public Car (string brand,string model): this()
+//   {
+//     Brand = brand;
+//     Model = model;
+//   }
+
+//   static Car ()
+//   {
+//     numberOfWeels = 4;
+//   }
+
+//   private Car (double Capacity): this(3.14)
+//   {
+//     _engineCapacity = Capacity;
+//   }
+//   public string Brand;
+//   public string Model;
+//   private double _engineCapacity;
+//   static int numberOfWeels;
+// }
+
+Random rnd = new();
+var number = rnd.Next(1, 4);
+var demo = new Demo();
+double num = 3.14;
+double num2 = 1.12;
+int num3 = 35;
+string[] a1 = new string[3];
+
+
+// float a=1.546F;
+// int b=1;
+// double c=3.14;
+
+if (number==1)
+  {a1 = ["a"];}
+else if (number==2)
+  {a1 = ["a","b"];}
+else
+  {a1 = ["a","b","c"];}
+
+demo.CubeMetod(num);
+demo.CubeMetod2(ref num2);
+demo.CubeMetod3(ref num3);
+demo.CubeMetod4(c:3.14,x:1.546F,y:1);
+demo.CubeMetod5(a1);
+demo.CubeMetod6(10);
+demo.CubeMetod6(10,10);
+
+Console.WriteLine("Cube = " + demo.CubeMetod(num));
+Console.WriteLine("Num = " + num2);
+Console.WriteLine("Num2 = " + num3);
+Console.WriteLine("Sum1 = " + demo.CubeMetod6(10));
+Console.WriteLine("Sum2 = " + demo.CubeMetod6(10,10));
+
+public class Demo
 {
-
-  public Car (string brand,string model): this()
+  public double CubeMetod (double x)
   {
-    Brand = brand;
-    Model = model;
+    double res= x*x*x;
+    return res;
   }
 
-  static Car ()
+  public void CubeMetod2  (ref double x)
   {
-    numberOfWeels = 4;
+    x=3.14;
   }
 
-  private Car (double Capacity): this(3.14)
+  public void CubeMetod3  (ref int x)
   {
-    _engineCapacity = Capacity;
+    x = x*x; 
   }
-  public string Brand;
-  public string Model;
-  private double _engineCapacity;
-  static int numberOfWeels;
+
+   public void CubeMetod4  (float x,int y,double c)
+  {
+    Console.WriteLine($"{x} {y} {c}");
+  }
+
+  public void CubeMetod5 (params string [] x)
+  {
+
+    foreach (var ch in x)
+            {
+                Console.WriteLine(ch);
+            }
+  }
+
+  public int CubeMetod6 (int x, int y = 100)
+  {
+    int c = x+y;
+    return c;
+  }
 }
-
 
 
 
