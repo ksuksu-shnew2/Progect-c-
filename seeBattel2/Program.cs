@@ -2,25 +2,22 @@
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
-while(true)
+// using seeBattel2;
+// var game = new Game();
+// game.Start();
+
+using System;
+
+namespace seeBattel2;
+
+public class Program
 {
-    Console.WriteLine("\n1. Новая игра");
-    Console.WriteLine("2. Загрузить игру");
-    Console.WriteLine("3. Сохранить игру");
-    Console.WriteLine("0. Выход\n");
-    Console.WriteLine("Ваш выбор: ");
-
-
-    String userInput = Console.ReadLine();
-
-    if(string.IsNullOrWhiteSpace(userInput)
-    ||!int.TryParse(userInput,out int inputChoice)
-    || inputChoice<0
-    || inputChoice>3)
+    public static void Main(string[] args)
     {
-        Console.WriteLine("Неправильный ввод! Введите число от 0 до 3");
-        continue;
+        // создаём игру и запускаем
+        var game = new Game();
+        game.Start();
     }
-    Console.WriteLine("Вы молодец!");
-    break;
 }
+
+
