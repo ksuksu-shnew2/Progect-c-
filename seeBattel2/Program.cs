@@ -8,16 +8,9 @@ using System.Text;
 
 using System;
 
-namespace seeBattel2;
+using seeBattel2;
 
-public class Program
-{
-    public static void Main(string[] args)
-    {
-        // создаём игру и запускаем
-        var game = new Game();
-        game.Start();
-    }
-}
+var game = new Game();
+game.Start();
 
 

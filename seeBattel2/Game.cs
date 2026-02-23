@@ -2,7 +2,6 @@ using System;
 
 namespace seeBattel2;
 
-
 public class Game
 {
     public void Start()
@@ -10,7 +9,7 @@ public class Game
         GameState userChoice;
        // while(true)
        do 
-{
+        {
     
     PrintMenu();
     userChoice = ValidateInput();
@@ -35,34 +34,34 @@ public class Game
     }  while  (userChoice == GameState.Menu);
     }
 
-    private void Quit ()
+    private void Quit()
     {
         Console.WriteLine("Exit");
     }
 
-    private void New ()
+    private void New()
     {
         Console.WriteLine("Скоро будет");
     }
 
-    private void Load ()
+    private void Load()
     {
         Console.WriteLine("Будет потом");
     }
 
-    private void Save ()
+    private void Save()
     {
         Console.WriteLine("Будет потом");
     }
 
-    private GameState ValidateInput()
+    private  GameState ValidateInput()
     {
         string? userInput = Console.ReadLine();
 
     if(string.IsNullOrWhiteSpace(userInput)
-    ||!int.TryParse(userInput,out int userChoice)
-    || userChoice< (int)GameState.Quit
-    || userChoice> (int)GameState.Save)
+       || !int.TryParse(userInput, out int userChoice)
+       || userChoice < (int)GameState.Quit
+       || userChoice > (int)GameState.Save)
     {
         Console.WriteLine("Неправильный ввод! Введите число от 0 до 3");
         return GameState.Menu;
