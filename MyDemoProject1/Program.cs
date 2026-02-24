@@ -1398,79 +1398,131 @@ using System.Globalization;
 //   static int numberOfWeels;
 // }
 
-Random rnd = new();
-var number = rnd.Next(1, 4);
-var demo = new Demo();
-double num = 3.14;
-double num2 = 1.12;
-int num3 = 35;
-string[] a1 = new string[3];
+// Random rnd = new();
+// var number = rnd.Next(1, 4);
+// var demo = new Demo();
+// double num = 3.14;
+// double num2 = 1.12;
+// int num3 = 35;
+// string[] a1 = new string[3];
 
 
-// float a=1.546F;
-// int b=1;
-// double c=3.14;
+// // float a=1.546F;
+// // int b=1;
+// // double c=3.14;
 
-if (number==1)
-  {a1 = ["a"];}
-else if (number==2)
-  {a1 = ["a","b"];}
-else
-  {a1 = ["a","b","c"];}
+// if (number==1)
+//   {a1 = ["a"];}
+// else if (number==2)
+//   {a1 = ["a","b"];}
+// else
+//   {a1 = ["a","b","c"];}
 
-demo.CubeMetod(num);
-demo.CubeMetod2(ref num2);
-demo.CubeMetod3(ref num3);
-demo.CubeMetod4(c:3.14,x:1.546F,y:1);
-demo.CubeMetod5(a1);
-demo.CubeMetod6(10);
-demo.CubeMetod6(10,10);
+// demo.CubeMetod(num);
+// demo.CubeMetod2(ref num2);
+// demo.CubeMetod3(ref num3);
+// demo.CubeMetod4(c:3.14,x:1.546F,y:1);
+// demo.CubeMetod5(a1);
+// demo.CubeMetod6(10);
+// demo.CubeMetod6(10,10);
 
-Console.WriteLine("Cube = " + demo.CubeMetod(num));
-Console.WriteLine("Num = " + num2);
-Console.WriteLine("Num2 = " + num3);
-Console.WriteLine("Sum1 = " + demo.CubeMetod6(10));
-Console.WriteLine("Sum2 = " + demo.CubeMetod6(10,10));
+// Console.WriteLine("Cube = " + demo.CubeMetod(num));
+// Console.WriteLine("Num = " + num2);
+// Console.WriteLine("Num2 = " + num3);
+// Console.WriteLine("Sum1 = " + demo.CubeMetod6(10));
+// Console.WriteLine("Sum2 = " + demo.CubeMetod6(10,10));
 
-public class Demo
+// public class Demo
+// {
+//   public double CubeMetod (double x)
+//   {
+//     double res= x*x*x;
+//     return res;
+//   }
+
+//   public void CubeMetod2  (ref double x)
+//   {
+//     x=3.14;
+//   }
+
+//   public void CubeMetod3  (ref int x)
+//   {
+//     x = x*x; 
+//   }
+
+//    public void CubeMetod4  (float x,int y,double c)
+//   {
+//     Console.WriteLine($"{x} {y} {c}");
+//   }
+
+//   public void CubeMetod5 (params string [] x)
+//   {
+
+//     foreach (var ch in x)
+//             {
+//                 Console.WriteLine(ch);
+//             }
+//   }
+
+//   public int CubeMetod6 (int x, int y = 100)
+//   {
+//     int c = x+y;
+//     return c;
+//   }
+// }
+
+// var car = new Car ("Lada"){Model = "2101"};
+// internal class Car
+// {
+//   public string Brand { get; init; }
+//   public string Model { get; init; }
+
+//   public int MaxSpeed { get; private set; } = 220;
+
+//   private double _engineCapacity;
+//   public double EngineCapacity
+//   {
+//   get { return _engineCapacity; }
+//   set { _engineCapacity = value; }
+//   }
+ 
+//   public Car(string brand)
+//     {
+//     Brand = brand;
+//     }
+// }
+
+
+var test = new Test1();
+test.Metod2();
+
+internal class New 
 {
-  public double CubeMetod (double x)
-  {
-    double res= x*x*x;
-    return res;
-  }
+    public string TestNew { get; set; } = "Proverka";
+    public virtual int ReturnInt() { return 42; }
+    public double ReturnDouble() { return 0.5; }
 
-  public void CubeMetod2  (ref double x)
-  {
-    x=3.14;
-  }
-
-  public void CubeMetod3  (ref int x)
-  {
-    x = x*x; 
-  }
-
-   public void CubeMetod4  (float x,int y,double c)
-  {
-    Console.WriteLine($"{x} {y} {c}");
-  }
-
-  public void CubeMetod5 (params string [] x)
-  {
-
-    foreach (var ch in x)
-            {
-                Console.WriteLine(ch);
-            }
-  }
-
-  public int CubeMetod6 (int x, int y = 100)
-  {
-    int c = x+y;
-    return c;
-  }
+    
+    protected void Metod1() 
+    {
+        Console.WriteLine("Privet mir");
+    }
 }
 
-
+internal class Test1 : New
+{
+    public void Metod2()
+    {
+        // вызываем метод из базового класса
+        Metod1();
+        
+        // и выведем значение свойства из базового класса
+        Console.WriteLine(TestNew);
+        
+    }
+    public override int ReturnInt() 
+        { return base.ReturnInt() * 10; }
+        public new double ReturnDouble() { return 3.14; }
+}
 
  

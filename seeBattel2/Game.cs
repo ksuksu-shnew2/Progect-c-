@@ -2,8 +2,11 @@ using System;
 
 namespace seeBattel2;
 
-public class Game
+public sealed class Game
 {
+
+    private  Board _playerBoard;
+    private  Board _machineBoard;
     public void Start()
     {
         GameState userChoice;
@@ -41,7 +44,17 @@ public class Game
 
     private void New()
     {
-        Console.WriteLine("Скоро будет");
+        _playerBoard = new Board();
+        _machineBoard = new Board();
+        PrintBoard();
+    }
+
+    private void PrintBoard()
+    {
+        Console.WriteLine("Ваша доска\n");
+        _playerBoard.Print();
+        Console.WriteLine("\nДоска компьютера\n");
+        _machineBoard.Print();
     }
 
     private void Load()
