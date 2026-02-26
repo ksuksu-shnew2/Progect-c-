@@ -1493,36 +1493,97 @@ using System.Globalization;
 // }
 
 
-var test = new Test1();
-test.Metod2();
+// var test = new Test1();
+// test.Metod2();
 
-internal class New 
-{
-    public string TestNew { get; set; } = "Proverka";
-    public virtual int ReturnInt() { return 42; }
-    public double ReturnDouble() { return 0.5; }
+// internal class New 
+// {
+//     public string TestNew { get; set; } = "Proverka";
+//     public virtual int ReturnInt() { return 42; }
+//     public double ReturnDouble() { return 0.5; }
 
     
-    protected void Metod1() 
-    {
-        Console.WriteLine("Privet mir");
-    }
-}
+//     protected void Metod1() 
+//     {
+//         Console.WriteLine("Privet mir");
+//     }
+// }
 
-internal class Test1 : New
-{
-    public void Metod2()
-    {
-        // вызываем метод из базового класса
-        Metod1();
+// internal class Test1 : New
+// {
+//     public void Metod2()
+//     {
+//         // вызываем метод из базового класса
+//         Metod1();
         
-        // и выведем значение свойства из базового класса
-        Console.WriteLine(TestNew);
+//         // и выведем значение свойства из базового класса
+//         Console.WriteLine(TestNew);
         
-    }
-    public override int ReturnInt() 
-        { return base.ReturnInt() * 10; }
-        public new double ReturnDouble() { return 3.14; }
-}
+//     }
+//     public override int ReturnInt() 
+//         { return base.ReturnInt() * 10; }
+//         public new double ReturnDouble() { return 3.14; }
+// }
 
+// using System;
+
+// var employee = new Employee();
+// employee.PrintAge();
+
+// internal class Person
+// {
+//     private readonly int _age;
+
+//     public Person(string s) => _age = int.Parse(s);
+
+//     public Person(int age) => _age = 0; // оставляем как есть, по условию задачи
+
+//     public void PrintAge() => Console.WriteLine(_age);
+// }
+
+// internal class Employee : Person
+// {
+//     public Employee() : base("25")  // тут передаём строку, будет вызван Person(string)
+//     {
+//     }
+
+//     public Employee(int age) : base(age)
+//     {
+//     }
+// }
+
+
+// var employee = new Employee();
+// internal class Person
+// {
+// private readonly int _age;
+// public Person(int age) => _age = age;
+// }
+// internal class Employee : Person { }
+
+// var employee = new Employee(30);
+// internal class Person
+// {
+//     private readonly int _age;
+
+//     public Person(int age) => _age = age;
+// }
+
+// internal class Employee : Person
+// {
+//     public Employee(int age) : base(age)
+//     {
+//     }
+// }
+
+// // где-то в коде:
+
+// var subClass = new SubClass();
+// internal class BaseClass {
+// public virtual int BaseProp { get; } = 10;
+// public BaseClass() => BaseProp = 100;
+// }
+// internal class SubClass : BaseClass {
+// public SubClass() => Console.WriteLine($"BaseProp: {BaseProp}");
+// }
  

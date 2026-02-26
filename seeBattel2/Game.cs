@@ -44,8 +44,8 @@ public sealed class Game
 
     private void New()
     {
-        _playerBoard = new Board();
-        _machineBoard = new Board();
+        _playerBoard = new Board(false);
+        _machineBoard = new Board(true);
         PrintBoard();
     }
 
