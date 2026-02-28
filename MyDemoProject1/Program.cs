@@ -1587,3 +1587,307 @@ using System.Globalization;
 // public SubClass() => Console.WriteLine($"BaseProp: {BaseProp}");
 // }
  
+
+
+// **Описание**: Создайте класс с полем-перечислением и методом, который возвращает числовое значение этого перечисления
+// **Входные данные**: Нет входных данных (используются встроенные значения)
+// **Выходные данные**: Числовое значение элемента перечисления
+// **Ограничения**: Используйте только стандартные возможности C#
+// **Примеры**:
+// Input: Priority.High
+// Output: 3
+// Входные данные: Priority.Medium
+// Output: 2
+
+// enum Priority
+// {
+//     North, East, South, West 
+// }
+
+// class Task
+// {
+//     public Priority TaskPriority = Priority.West;
+    
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         Task task = new Task();
+//         int num = (int)task.TaskPriority;
+//         Console.WriteLine(num);
+//     }
+// }
+// **Описание**: Создайте класс с приватным полем и публичным свойством, которое инкапсулирует это поле
+//
+// **Входные данные**: Нет входных данных (используются встроенные значения)
+//
+// **Выходные данные**: Значение свойства после установки и получения
+//
+// **Ограничения**: Используйте только стандартные возможности C#
+//
+// **Примеры**:
+// Input: установить значение 42
+// Output: 42
+//
+// Входные данные: установить значение "Hello"
+// Output: Hello
+
+// class Container
+// {
+//     private int _a;
+
+//     public int Age
+//     {
+//         set{_a=value;}
+//         get{return _a;}
+//     }
+// }
+// class Program
+// {
+//     static void Main()
+//     {
+
+//         Container c = new Container (); 
+//         c.Age = 30;
+//         Console.WriteLine(c.Age);
+//         // Ваш код здесь
+//     }
+// }
+
+// **Описание**: Создайте класс с методом, который принимает именованные параметры и выводит их значения в консоль
+// **Входные данные**: Нет входных данных (используются встроенные значения при вызове метода)
+// **Выходные данные**: Строка с переданными параметрами
+// **Ограничения**: Используйте только стандартные возможности C#
+// **Примеры**:
+// Input: вызов метода с параметрами name: "Alice", age: 25
+// Output: Name: Alice, Age: 25
+// Входные данные: вызов метода с параметрами name: "Bob", age: 30
+// Output: Name: Bob, Age: 30
+
+//using System;
+
+// class Printer
+// {
+//     public void PrintPersonInfo(string name, int age)
+//     {
+//         Console.WriteLine($"Имя: {name}");
+//         Console.WriteLine($"Возраст: {age}");
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         Printer p = new Printer();
+
+//         // Вызов с именованными параметрами
+//         p.PrintPersonInfo(
+//             age: 25,
+//             name: "Алексей"
+//         );
+//     }
+// }
+
+// class Printer
+// {
+//     public string PrintPersonInfo(string product="Unknown", int price=0)
+//     {
+//         return $"Product :{product}, Price: {price}";  
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         Printer p = new Printer();
+
+//         // Вызов с именованными параметрами
+//         //string s=p.PrintPersonInfo();
+//         //Console.WriteLine(s);
+
+//         Console.WriteLine(p.PrintPersonInfo()); 
+//         Console.WriteLine(p.PrintPersonInfo(product: "Laptop"));
+        
+//     }
+// }
+
+// enum Size
+// {
+//     Small,
+//     Medium,
+//     Large
+// }
+// class Printer
+// {
+//     private Size _size;
+
+//     public  Printer(Size size=Size.Medium)
+//     {
+//         _size=size;
+//     }
+//     public bool PrintPersonInfo(Size size=Size.Small)
+//     {
+//         bool t;
+//         //Size s1;
+//        if (size == _size)
+//         {
+//             t=true;
+//         }
+      
+//         else
+//         {
+//             t=false;
+//         }
+
+       
+//         return t;  
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         Printer p = new Printer(Size.Medium);
+
+//         // Вызов с именованными параметрами
+//         // bool s=p.PrintPersonInfo();
+//         // Console.WriteLine(s);
+
+//         Console.WriteLine(p.PrintPersonInfo()); 
+//         Console.WriteLine(p.PrintPersonInfo(Size.Medium));
+//         Console.WriteLine(p.PrintPersonInfo(Size.Large));
+        
+//     }
+// }
+
+// var demo = new Demo();
+// var sum = demo.OptionalParameters(10,20);
+// Console.WriteLine(sum); // выведет 20
+// public class Demo
+// {
+
+// public int OptionalParameters(int a, int b)
+// {
+// return a + b;
+// }
+// }
+
+
+// enum Color
+// {
+//     Red,
+//     Black,
+//     Blue
+// }
+
+// // Ваш код здесь
+
+// class Program
+// {
+//   //  private Color _color;
+//     static void Main()
+//     {
+//         Color c = Color.Black;
+//         string color = (string)c.ToString();
+//         Console.WriteLine(color); 
+
+//     }
+// }
+
+// enum Day
+// {
+//     Monday,
+//     Tuesday,
+//     Wednesday,
+//     Thursday,
+//     Friday,
+//     Saturday,
+//     Sunday
+// }
+
+// class EnumConverter
+// {
+//    public Day c = Day.Friday;
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         EnumConverter day = new EnumConverter();
+//         Day value = day.c;
+//         //Color c = Color.Black;
+//         string dayT = value.ToString();
+//         Console.WriteLine(dayT); 
+//     }
+// }
+
+
+// enum Level
+// {
+//     Low = 1,
+//     Medium = 2,
+//     High = 3
+// }
+
+// class NumberChecker
+// {
+//     public Level CurrentLevel;
+
+//     public NumberChecker(Level level)
+//     {
+//         CurrentLevel = level;
+//     }
+
+//     // Метод проверяет, чётное ли числовое значение уровня
+//     public bool IsEvenLevel()
+//     {
+//         int value = (int)CurrentLevel; // приводим enum к int
+//         return value % 2 == 0;
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         NumberChecker checker1 = new NumberChecker(Level.Low);
+//         NumberChecker checker2 = new NumberChecker(Level.Medium);
+//         NumberChecker checker3 = new NumberChecker(Level.High);
+
+//         Console.WriteLine(checker1.IsEvenLevel());   // false (1)
+//         Console.WriteLine(checker2.IsEvenLevel());   // true  (2)
+//         Console.WriteLine(checker3.IsEvenLevel());   // false (3)
+//     }
+// }
+
+
+class JobTitle
+{
+    public string c;
+
+    public JobTitle(string m)
+    {
+        c = m;
+      //  return $"{c}";
+    }
+}
+
+class Program
+{
+
+
+    static void Main(string[] args)
+    {
+        JobTitle checker1 = new JobTitle("Developer");
+
+        Console.WriteLine(checker1.c);
+        JobTitle checker2 = new JobTitle("Manager");
+        Console.WriteLine(checker2.c);
+    }
+}
