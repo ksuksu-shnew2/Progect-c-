@@ -1867,27 +1867,114 @@ using System.Globalization;
 // }
 
 
-class JobTitle
-{
-    public string c;
+// class JobTitle
+// {
+//     public string c;
 
-    public JobTitle(string m)
-    {
-        c = m;
-      //  return $"{c}";
-    }
-}
+//     public JobTitle(string m)
+//     {
+//         c = m;
+//       //  return $"{c}";
+//     }
+// }
 
-class Program
-{
+// class Program
+// {
 
 
-    static void Main(string[] args)
-    {
-        JobTitle checker1 = new JobTitle("Developer");
+//     static void Main(string[] args)
+//     {
+//         JobTitle checker1 = new JobTitle("Developer");
 
-        Console.WriteLine(checker1.c);
-        JobTitle checker2 = new JobTitle("Manager");
-        Console.WriteLine(checker2.c);
-    }
-}
+//         Console.WriteLine(checker1.c);
+//         JobTitle checker2 = new JobTitle("Manager");
+//         Console.WriteLine(checker2.c);
+//     }
+// }
+
+// Cat cat = new();
+
+// cat.Hello();
+// //var cats = new Cat[5];
+// //void CatGreetings(Cat cat) => cat.Hello();
+// // class Zoo 
+// // { public Cat Cat; }
+// ref struct Cat {
+// public string Name ;
+
+// public int Age { get; set; }
+//     public void Hello() //=> 
+//     {
+//         Name = "Ksu";
+//     Console.Write($"Привет, я {Name}");
+//     }
+
+// }
+
+// Cat cat = new();
+// //var cats = new Cat[5];
+// void CatGreetings(Cat cat) => cat.Hello();
+// //class Zoo { public Cat Cat; }
+// ref struct Cat {
+// public string Name;
+// public int Age { get; set; }
+// public void Hello() => Console.WriteLine($"Привет, я {Name}");
+// }
+
+// readonly struct Cat 
+// {
+// public readonly string Name;
+// public int Age { get; }
+// public void Hello() 
+// { Console.WriteLine($"Привет, я {Name}");}
+// }
+// struct Animal
+// {
+// public string Breed;
+
+// }
+
+// readonly struct Cat {
+// public readonly string Name;
+// public int Age { get; }
+// public void Hello() => Console.WriteLine($"Привет, я {Name}");
+// }
+// struct Animal {
+// public string Breed;
+// }
+
+// Localhost lh = new Localhost();
+// Console.WriteLine($"Address: {lh.Host}, Host: {lh.Port}");
+// lh = default;
+// Console.WriteLine($"Address: {lh.Host}, Host: {lh.Port}");
+// struct Localhost {
+// public Localhost() { }
+// private string _host;
+// private int _port;
+// public string Host { get => _host ?? "127.0.0.1"; set => _host = value; }
+// public int Port { get => _port == 0 ? 3128 : _port; set => _port = value; }}
+
+// var lh = new Localhost();
+// Console.WriteLine($"Address: {lh.Host}, Host: {lh.Port}");
+// lh = default;
+// Console.WriteLine($"Address: {lh.Host}, Host: {lh.Port}");
+// struct Localhost {
+// public Localhost() { }
+// private string _host;
+// private int _port;
+// public string Host { get => _host ?? "127.0.0.1"; set => _host = value; }
+// public int Port { get => _port == 0 ? 3128 : _port; set => _port = value; }
+// }
+
+
+// var lh = new Localhost();
+// Console.WriteLine($"Address: {lh.Host}, Port: {lh.Port}");
+// lh = default;
+// Console.WriteLine($"Address: {lh.Host}, Port: {lh.Port}");
+// struct Localhost
+// {
+// public Localhost() { }
+// public string Host =
+// "127.0.0.1";
+// public int Port = 3128;
+// }
