@@ -1992,14 +1992,87 @@ using System.Globalization;
 // Console.WriteLine(person2.age);
 
 // Третье задание
-var emp2 = new EmployeeR("Marvin", 42, 12);
-(string name, _, _) = emp;
-Console.WriteLine(name);
-// Четвёртое задание
-// var emp3 = new EmployeeS("Marvin", 42, 12);
-// var emp4 = emp3 with { Name = "Nick", Age = 45 };
-// Console.WriteLine(emp3);
-// Console.WriteLine(emp4);
-record class EmployeeR(string Name, int Age, int Exp); // 3-е задание
-//readonly record struct EmployeeS(string Name, int Age, int Exp); // 4-е задание
+// var emp2 = new EmployeeR("Marvin", 42, 12);
+// (string name, _, _) = emp;
+// Console.WriteLine(name);
+// // Четвёртое задание
+// // var emp3 = new EmployeeS("Marvin", 42, 12);
+// // var emp4 = emp3 with { Name = "Nick", Age = 45 };
+// // Console.WriteLine(emp3);
+// // Console.WriteLine(emp4);
+// record class EmployeeR(string Name, int Age, int Exp); // 3-е задание
+// //readonly record struct EmployeeS(string Name, int Age, int Exp); // 4-е задание
 
+// var empName = new Employee().GetInfo();
+// Console.WriteLine(empName);
+// abstract class Car
+// {
+//     public abstract string Model { get; }
+//     public abstract double Capacity { get; }
+
+//     protected string Brand { get; }
+
+//     public abstract string GetInfo(); 
+
+//     protected Car(string brand)
+//     {
+//          Brand= brand;
+//     }
+// }
+
+// class Employee : Car
+// {
+//     // Реализуем абстрактные свойства
+//     public override string Model { get; }
+//     public override double Capacity { get; }
+
+//     // Конструктор класса Employee
+//     public Employee(string brand, string model, double capacity) 
+//         : base(brand)
+//     {
+//         Model = model;
+//         Capacity = capacity;
+//     }
+
+//     public override string GetInfo()
+//     {
+//         return $"Марка: {Brand} - Модель: {Model}(Объём: {Capacity})";
+//     }
+// }
+
+// public class Program
+// {
+//     static void Main()
+//     {
+//         var emp = new Employee("Toyota", "Corolla", 1.6);
+//         var empName = emp.GetInfo();
+//         Console.WriteLine(empName);
+//     }
+// }
+
+
+// var emp = new Employee() { Name = "Marvin", Position = "Developer" };
+// emp.GetInfo();
+// class Employee : IEmployee {
+// public string Position { get; set; }
+// public string Name { get; set; }
+// public void GetInfo() => Console.WriteLine($"{Name} ({Position})");
+// }
+// public interface IPerson {
+// string Name { get; set; }
+// }
+// public interface IEmployee : IPerson {
+// string Position { get; set; }
+// }
+
+var shape = new Shape { Radius = 3.4, Side = 2 };
+Console.WriteLine((shape as ISquare).CalculateArea());
+Console.WriteLine((shape as ICircle).CalculateArea());
+class Shape : ISquare, ICircle {
+public int Side { get; set; }
+public double Radius { get; set; }
+int ISquare.CalculateArea() => Side * Side;
+double ICircle.CalculateArea() => 3.14 * Radius * Radius;
+}
+public interface ISquare { int CalculateArea(); }
+public interface ICircle { double CalculateArea(); }
