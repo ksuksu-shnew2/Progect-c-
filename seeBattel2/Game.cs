@@ -4,9 +4,18 @@ namespace seeBattel2;
 
 public sealed class Game
 {
+    internal Board PlayerBoard { get; set; }
 
-    private  Board _playerBoard;
-    private  Board _machineBoard;
+    internal Board MachineBoard { get; set; }
+    // private  Board _playerBoard;
+    // private  Board _machineBoard;
+
+    public Game()
+    {
+        PlayerBoard = new Board(false); // или передать параметром в конструктор
+        MachineBoard = new Board(true); 
+    }
+
     public void Start()
     {
         GameState userChoice;
@@ -44,17 +53,20 @@ public sealed class Game
 
     private void New()
     {
-        _playerBoard = new Board(false);
-        _machineBoard = new Board(true);
+        // _playerBoard = new Board(false);
+        // _machineBoard = new Board(true);
+
+        PlayerBoard = new Board(false);
+        MachineBoard = new Board(true);
         PrintBoard();
     }
 
     private void PrintBoard()
     {
         Console.WriteLine("Ваша доска\n");
-        _playerBoard.Print();
+        PlayerBoard.Print();
         Console.WriteLine("\nДоска компьютера\n");
-        _machineBoard.Print();
+        MachineBoard.Print();
     }
 
     private void Load()

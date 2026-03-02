@@ -1978,3 +1978,28 @@ using System.Globalization;
 // "127.0.0.1";
 // public int Port = 3128;
 // }
+//using person3 = (string,int,int);
+// //var p = ("Tst",45,10);
+
+// var emp1 = GetEmployeeInfo("Marvin", 42, 12);
+// Console.WriteLine(emp1.Item1);
+// person3 GetEmployeeInfo(string name, int age, int exp) {
+// return (name, age, exp);
+// }
+
+
+// ( string name,  int age,int number) person2 = (name: "Марвин", age: 42,number: 5);
+// Console.WriteLine(person2.age);
+
+// Третье задание
+var emp2 = new EmployeeR("Marvin", 42, 12);
+(string name, _, _) = emp;
+Console.WriteLine(name);
+// Четвёртое задание
+// var emp3 = new EmployeeS("Marvin", 42, 12);
+// var emp4 = emp3 with { Name = "Nick", Age = 45 };
+// Console.WriteLine(emp3);
+// Console.WriteLine(emp4);
+record class EmployeeR(string Name, int Age, int Exp); // 3-е задание
+//readonly record struct EmployeeS(string Name, int Age, int Exp); // 4-е задание
+
