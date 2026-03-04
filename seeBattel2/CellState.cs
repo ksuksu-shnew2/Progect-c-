@@ -6,5 +6,6 @@ public enum CellState
     Unbroken,
     Damaged,
     Destroyed,
-    Alongside
+    Alongside,
+    OffTarget
 }

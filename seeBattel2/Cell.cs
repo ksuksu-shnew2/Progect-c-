@@ -5,15 +5,23 @@ namespace seeBattel2;
 
 internal sealed class Cell
 {
-    public CellState State {get; set;} = CellState.Empty;
+    internal CellState State { get; set; } = CellState.Empty;
+
+    private readonly bool _isMachineBoard;
+
+    internal Cell(bool isMachineBoard)
+    {
+        _isMachineBoard = isMachineBoard;
+    }
+
     public override string ToString()
     {
         return State switch
         {
-            CellState.Empty or CellState.Alongside => "*",
-            CellState.Unbroken => "K",
-            CellState.Damaged or CellState.Destroyed => "x",
-            _ => "?"
+            CellState.Empty => "\u00B7",
+            CellState.Unbroken => _isMachineBoard ? "\u00B7" : "?",
+            CellState.Damaged => "X",
+            _ => "*"
         };
     }
 }
