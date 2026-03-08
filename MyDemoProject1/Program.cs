@@ -2065,14 +2065,164 @@ using System.Globalization;
 // string Position { get; set; }
 // }
 
-var shape = new Shape { Radius = 3.4, Side = 2 };
-Console.WriteLine((shape as ISquare).CalculateArea());
-Console.WriteLine((shape as ICircle).CalculateArea());
-class Shape : ISquare, ICircle {
-public int Side { get; set; }
-public double Radius { get; set; }
-int ISquare.CalculateArea() => Side * Side;
-double ICircle.CalculateArea() => 3.14 * Radius * Radius;
-}
-public interface ISquare { int CalculateArea(); }
-public interface ICircle { double CalculateArea(); }
+// var shape = new Shape { Radius = 3.4, Side = 2 };
+// Console.WriteLine((shape as ISquare).CalculateArea());
+// Console.WriteLine((shape as ICircle).CalculateArea());
+// class Shape : ISquare, ICircle {
+// public int Side { get; set; }
+// public double Radius { get; set; }
+// int ISquare.CalculateArea() => Side * Side;
+// double ICircle.CalculateArea() => 3.14 * Radius * Radius;
+// }
+// public interface ISquare { int CalculateArea(); }
+// public interface ICircle { double CalculateArea(); }
+
+// **Описание**: Создайте структуру Product с полями Name (string), Price (double) и методом GetInfo(), который возвращает строку с информацией о товаре в формате "Товар: [Name], Цена: [Price]".
+// **Входные данные**: Встроенные данные - создайте экземпляр структуры с товаром "Хлеб" стоимостью 25.50
+// **Выходные данные**: Строка с информацией о товаре
+// **Ограничения**: Используйте только структуру, поля и один метод
+// **Примеры**:
+// Input: Product с Name="Хлеб", Price=25.50
+// Output: "Товар: Хлеб, Цена: 25.5"
+// public class Program
+// {
+//     public static void Main()
+//     {
+//         Product bread = new Product
+//         {
+//             Name="Хлеб",
+//             Price= 25.50
+            
+//         };
+
+//         Console.WriteLine(bread.GetInfo());
+//     }
+
+// public struct Product {
+//         public string Name;
+//         public double Price;
+//         public string GetInfo() 
+//         {
+//             return $"Товар: {Name}, Цена: {Price}";
+//         }
+//     }
+// }
+
+// using System;
+
+// public interface ICalculator
+// {
+//     double Calculate(double a, double b);
+// }
+
+// public class BasicCalculator : ICalculator
+// {
+//     public double Calculate(double a, double b)
+//     {
+//         return a + b;
+//     }
+// }
+
+// public class Program
+// {
+//     public static void Main()
+//     {
+//         ICalculator calc = new BasicCalculator();
+
+//         // Встроенные данные: 15.5 и 8.3
+//         double a = 15.5;
+//         double b = 8.3;
+
+//         double result = calc.Calculate(a, b);
+
+//         Console.WriteLine($"Результат сложения {a} и {b} = {result}");
+//     }
+// }
+
+//(string, int) person2 = (Name : "Anna", Grade : 85);
+
+using System;
+
+// public class Program
+// {
+//     public static void Main()
+//     {
+//         // Встроенные данные: студент "Анна" с оценкой 85
+//         (string Name, int Grade) student = (Name: "Анна", Grade: 85);
+
+//         string info = GetStudentInfo(student);
+//         Console.WriteLine(info);
+//     }
+
+//     // Метод, принимающий именованный кортеж и возвращающий строку
+//     public static string GetStudentInfo((string Name, int Grade) student)
+//     {
+//         return $"Студент: {student.Name}, Оценка: {student.Grade}";
+//     }
+// }
+
+// public abstract class Shape
+// {
+//     public abstract double GetArea();
+// }
+
+// public class Circle : Shape
+// {
+//     private double radius;
+
+//     public Circle(double radius)
+//     {
+//         this.radius = radius;
+//     }
+
+//     public override double GetArea()
+//     {
+//         return System.Math.PI * radius * radius;
+//     }
+//     class Program
+// {
+//     static void Main()
+//     {
+// var circle = new Circle(5.0);
+//  double area = circle.GetArea(); 
+//  Console.WriteLine(area);
+//     }
+// }
+// }
+
+// Пример использования:
+// 78.53981633974483
+
+using System;
+
+// public class Container<T>
+// {
+//     private T[] items = new T[0];
+
+//     public void Add(T item)
+//     {
+//         Array.Resize(ref items, items.Length + 1);
+//         items[items.Length - 1] = item;
+//     }
+
+//     public T[] GetItems()
+//     {
+//         return items;
+//     }
+// }
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         var container = new Container<string>();
+//         container.Add("apple");
+//         container.Add("banana");
+//         container.Add("cherry");
+
+//         var items = container.GetItems();
+//         Console.WriteLine("Содержимое контейнера: " + string.Join(", ", items));
+//         // Ожидаемый вывод:
+//         // Содержимое контейнера: apple, banana, cherry
+//     }
+// }
