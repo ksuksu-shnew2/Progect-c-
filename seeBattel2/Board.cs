@@ -5,7 +5,7 @@ namespace seeBattel2;
 
 internal sealed class Board
 {
-    private const int BoardSide = 10;
+    internal const int BoardSide = 10;
     private const string VerticalCoords = "   А Б В Г Д Е Ж З И К";
     private readonly int[] _ships = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1];
 
