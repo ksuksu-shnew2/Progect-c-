@@ -8,6 +8,11 @@ internal enum Move
     Machine
 }
 
+
+public class QuitToSaveException : Exception
+{
+}
+
 public sealed class Game
 {
     internal  Board PlayerBoard { get; set; }
@@ -172,7 +177,29 @@ public sealed class Game
 
     private void Save()
     {
-        Console.WriteLine("Будет потом");
+
+        if (PlayerBoard == null || MachineBoard == null)
+    {
+        Console.WriteLine("Нет активной игры для сохранения. Сначала начните новую игру или загрузите сохранение.");
+        Start();
+        return;
+    }
+          string filePath = string.Empty;
+        try
+        {
+            filePath = GameKeeper.Save(this);
+            Console.WriteLine($"Игра успешно сохранена в файл {filePath}");
+            Console.WriteLine($"Для возврата в игру загрузите этот файл в пункте 'Загрузить'.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка сохранения игры в файл {filePath}.");
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            Start();
+        }
     }
 
 }

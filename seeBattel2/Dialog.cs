@@ -9,7 +9,13 @@ internal static class Dialog
     private static readonly string[] _verticalCoords =
         ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
-        internal class QuitToSaveException : Exception { }
+      //  internal class QuitToSaveException : Exception { }
+
+    
+
+// public class QuitToSaveException : Exception
+// {
+// }
     
     internal static void PrintMenu()
     {
@@ -231,7 +237,7 @@ internal static class Dialog
 
         if (userInput == "0")
         {
-            throw new QuitToSaveException();
+            throw new Game.QuitToSaveException();
         }
 
         coord = int.MinValue;
