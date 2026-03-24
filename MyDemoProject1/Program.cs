@@ -2226,3 +2226,197 @@ using System;
 //         // Содержимое контейнера: apple, banana, cherry
 //     }
 // }
+
+// using System;
+// using System.Diagnostics;
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу для измерения времени выполнения простого математического вычисления с использованием Stopwatch
+//         // **Входные данные**: Встроенное в код количество итераций цикла (например, 1000000)
+//         // **Выходные данные**: Время выполнения в миллисекундах
+//         // **Ограничения**: Количество итераций должно быть положительным числом
+//         // **Примеры**:
+//         // Входные данные: 1000000 итераций
+//         // Output: Время выполнения: 15 ms
+//         // Входные данные: 500000 итераций
+//         // Output: Время выполнения: 8 ms
+        
+//         int iterations = 1000000;
+
+//         // Проверка ограничения: количество итераций должно быть положительным числом
+//         if (iterations <= 0)
+//         {
+//             Console.WriteLine("Ошибка: Количество итераций должно быть положительным числом.");
+//             return; // Завершаем программу, если условие не выполнено
+//         }
+
+//         // Создаем экземпляр Stopwatch
+//         Stopwatch stopwatch = new Stopwatch();
+
+//         // Запускаем измерение времени
+//         stopwatch.Start();
+
+//         // Выполняем простое математическое вычисление в цикле
+//         long result = 0; // Используем long для предотвращения переполнения
+//         for (int i = 0; i < iterations; i++)
+//         {
+//             result += i; // Простое сложение
+//         }
+
+//         // Останавливаем измерение времени
+//         stopwatch.Stop();
+
+//         // Получаем общее время выполнения в миллисекундах
+//         long milliseconds = stopwatch.ElapsedMilliseconds;
+
+//         // Выводим результат
+//         Console.WriteLine($"Время выполнения: {milliseconds} ms");
+//         //Console.WriteLine($"res: {result} ");
+//     }
+// }
+
+
+
+
+//using System.Globalization; // Необходимо для CultureInfo
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // **Описание**: Создайте программу для парсинга строки с датой и обработки возможных ошибок формата
+//         // **Входные данные**: Встроенная в код строка с датой (например, "2024-03-15 14:30:00")
+//         // **Выходные данные**: При успешном парсинге - компоненты даты (год, месяц, день, час, минута), при ошибке - сообщение об ошибке
+//         // **Ограничения**: Строка может содержать некорректный формат даты
+        
+//         string dateString = "2024-03-15 14:30:00"; // Пример корректной строки
+//         // string dateString = "некорректная дата"; // Пример некорректной строки для тестирования
+
+//         try
+//         {
+//             // Используем DateTime.ParseExact для строгого соответствия формату
+//             // Указываем CultureInfo.InvariantCulture, чтобы игнорировать региональные настройки
+//             DateTime parsedDate = DateTime.ParseExact(dateString, "yyyy-MM-dd HH:mm:ss",CultureInfo.InvariantCulture);
+
+//             // Извлекаем компоненты даты
+//             int year = parsedDate.Year;
+//             int month = parsedDate.Month;
+//             int day = parsedDate.Day;
+//             int hour = parsedDate.Hour;
+//             int minute = parsedDate.Minute;
+
+//             // Выводим результат
+//             Console.WriteLine($"Парсинг успешен:");
+//             Console.WriteLine($"Год: {year}");
+//             Console.WriteLine($"Месяц: {month}");
+//             Console.WriteLine($"День: {day}");
+//             Console.WriteLine($"Час: {hour}");
+//             Console.WriteLine($"Минута: {minute}");
+//         }
+//         catch (FormatException)
+//         {
+//             // Обрабатываем ошибку, если строка не соответствует ожидаемому формату
+//             Console.WriteLine($"Ошибка: Строка '{dateString}' имеет некорректный формат даты.");
+//         }
+//         catch (Exception ex)
+//         {
+//             // Обрабатываем другие возможные исключения
+//             Console.WriteLine($"Произошла непредвиденная ошибка: {ex.Message}");
+//         }
+//     }
+
+    
+// }
+
+using System;
+
+// class Program
+// {
+//     static void Main()
+//     {
+//         // Пример 1
+//         DateTime startDate1 = new DateTime(2020, 1, 1);
+//         DateTime endDate1   = new DateTime(2024, 1, 1);
+
+//         Console.WriteLine("Пример 1:");
+//         PrintDateDifference(startDate1, endDate1);
+//         Console.WriteLine();
+
+//         // Пример 2
+//         DateTime startDate2 = new DateTime(2023, 6, 15);
+//         DateTime endDate2   = new DateTime(2024, 3, 20);
+
+//         Console.WriteLine("Пример 2:");
+//         PrintDateDifference(startDate2, endDate2);
+//     }
+
+//     static void PrintDateDifference(DateTime startDate, DateTime endDate)
+//     {
+//         if (startDate >= endDate)
+//         {
+//             Console.WriteLine("Ошибка: первая дата должна быть раньше второй.");
+//             return;
+//         }
+
+//         TimeSpan diff = endDate - startDate;
+
+//         int days  = (int)diff.TotalDays;
+//         int hours = (int)diff.TotalHours;
+
+//         int years = CalculateFullYears(startDate, endDate);
+
+//         Console.WriteLine($"Start date: {startDate:yyyy-MM-dd}");
+//         Console.WriteLine($"End date:   {endDate:yyyy-MM-dd}");
+//         Console.WriteLine($"Разность: {days} дней, {hours} часов, {years} лет");
+//     }
+
+//     static int CalculateFullYears(DateTime start, DateTime end)
+//     {
+//         int years = end.Year - start.Year;
+
+//         // Если "годовщина" ещё не наступила в году end — уменьшаем на 1
+//         if (end.Month < start.Month || 
+//            (end.Month == start.Month && end.Day < start.Day))
+//         {
+//             years--;
+//         }
+
+//         if (years < 0)
+//             years = 0;
+
+//         return years;
+//     }
+// }
+
+
+
+
+class Program
+{
+    static void Main()
+    {
+        // Входные данные (можешь менять для проверки)
+        int hours = 2;
+        int minutes = 45;
+        int seconds = 30;
+
+        // Проверка ограничений
+        if (hours < 0 || minutes < 0 || seconds < 0)
+        {
+            Console.WriteLine("Ошибка: значения часов, минут и секунд должны быть неотрицательными.");
+            return;
+        }
+
+        // Создаём TimeSpan
+        TimeSpan timeSpan = new TimeSpan(hours, minutes, seconds);
+
+        // Выводим различные форматы
+        Console.WriteLine($"Исходные значения: {hours} ч, {minutes} мин, {seconds} с");
+        Console.WriteLine($"Общее количество минут: {timeSpan.TotalMinutes}");
+        Console.WriteLine($"Общее количество секунд: {timeSpan.TotalSeconds}");
+        Console.WriteLine($"Формат (hh:mm:ss): {timeSpan:hh\\:mm\\:ss}");
+    }
+}
