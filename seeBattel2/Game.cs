@@ -178,8 +178,7 @@ public sealed class Game
             Console.WriteLine("Загрузка игры. Введите полный путь к файлу:");
             filePath = Console.ReadLine();
             GameKeeper.Load(filePath, this);
-            
-        2
+        }
         catch (Exception ex)
         {
             Console.WriteLine($"Ошибка загрузки игры из файла {filePath}");
