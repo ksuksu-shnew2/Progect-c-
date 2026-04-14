@@ -1,4 +1,7 @@
 {
     "xcodeIntegration.projectPath": "/Users/sh_ksenya/Documents/Progect c#",
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "csharp-dev-tools.roslyn.projectOrSolutionFiles": [
+        "/Users/sh_ksenya/Documents/Progect c#/Progect c#.sln"
+    ]
 }
