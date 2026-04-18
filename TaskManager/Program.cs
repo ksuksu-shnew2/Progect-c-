@@ -30,7 +30,7 @@ class Program
         int numberMenu;
         string NameTask;
         int numTask;
-        
+        string text;
         //List<TaskItem> tasks = LoadTasks();
         FileService fileService = new();
         TaskService taskService = new(fileService.LoadTasks());
@@ -80,6 +80,33 @@ class Program
         taskService.EditTasks(numTask,NameTask);
         ////fileService.SaveTasks(tasks);
         }
+        else if (numberMenu == 7) 
+        {
+        Console.WriteLine($"\n\n\nВведите слово для поиска");
+        text = Console.ReadLine();
+        taskService.Search(text);
+        ////fileService.SaveTasks(tasks);
+        }
+        else if (numberMenu == 8) 
+        {
+        taskService.FilterTrueTask();
+        ////fileService.SaveTasks(tasks);
+        }
+        else if (numberMenu == 9) 
+        {
+        taskService.FilterFalseTask();
+        ////fileService.SaveTasks(tasks);
+        }
+        else if (numberMenu == 10) 
+        {
+        taskService.ShowStats();
+        ////fileService.SaveTasks(tasks);
+        }
+        else if (numberMenu == 11) 
+        {
+        taskService.SortTask();
+        ////fileService.SaveTasks(tasks);
+        }
         else break;
         fileService.SaveTasks(taskService.Tasks);
         }
@@ -93,8 +120,14 @@ class Program
         Console.WriteLine($"4. Отметить задачу выполненной");
         Console.WriteLine($"5. Снять отметку выполнения");
         Console.WriteLine($"6. Редактировать задачу");
+        Console.WriteLine($"7. Поиск задачи");
+        Console.WriteLine($"8. Показать только выполненные");
+        Console.WriteLine($"9. Показать только невыполненные");
+        Console.WriteLine($"10. Статистика");
+        Console.WriteLine($"11. Сортировать по дате");
         Console.WriteLine("0. Выход\n");
         Console.WriteLine("Ваш выбор: ");
+
     }
 
     // internal static void ShowTasks(List<TaskItem> taskList)

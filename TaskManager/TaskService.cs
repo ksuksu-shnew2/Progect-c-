@@ -81,4 +81,99 @@ public class TaskService
         }
         else Console.WriteLine($"\n\nНет задач на удаление");
     }
+
+    public void  Search(string text)
+    {
+        if(string.IsNullOrWhiteSpace(text))
+        {
+        Console.WriteLine($"\n\nВвели пустую строку");
+        }
+        
+        var found = Tasks
+        .Where(t => t.Title.Contains(text, StringComparison.OrdinalIgnoreCase))
+        .ToList();
+
+        if (found.Count == 0)
+            {
+                Console.WriteLine("Ничего не найдено");
+                return;
+            }
+        else
+        {
+            Console.WriteLine("\nНайденные задачи:");
+
+            for (int i = 0; i < found.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {found[i]}");
+            }
+        }
+    }
+    public void  FilterTrueTask()
+    {
+        
+        var found = Tasks
+        .Where(t => t.IsDone).ToList();
+
+        if (found.Count == 0)
+            {
+                Console.WriteLine("Ничего не найдено");
+                return;
+            }
+        else
+        {
+            Console.WriteLine("\nНайденные задачи:");
+
+            for (int i = 0; i < found.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {found[i]}");
+            }
+        }
+    }
+    public void  FilterFalseTask()
+    {
+        
+        var found = Tasks
+        .Where(t => !t.IsDone).ToList();
+
+        if (found.Count == 0)
+            {
+                Console.WriteLine("Ничего не найдено");
+                return;
+            }
+        else
+        {
+            Console.WriteLine("\nНайденные задачи:");
+
+            for (int i = 0; i < found.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {found[i]}");
+            }
+        
+        }
+    }
+    public void ShowStats()
+    {
+    int total = Tasks.Count;
+    int done = Tasks.Count(t => t.IsDone);
+    int undone = total - done;
+
+    Console.WriteLine("\n=== Статистика ===");
+    Console.WriteLine($"Всего задач: {total}");
+    Console.WriteLine($"Выполнено: {done}");
+    Console.WriteLine($"Осталось: {undone}");
+    }
+
+    public void  SortTask()
+    {
+        
+         Tasks = Tasks
+        .OrderBy(t => t.CreatedAt)
+        .ToList();
+
+        Console.WriteLine("Задачи отсортированы по дате");
+        for (int i = 0; i < Tasks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {Tasks[i]}");
+            }
+    }
 }
