@@ -31,6 +31,7 @@ class Program
         string NameTask;
         int numTask;
         string text;
+        int num;
         //List<TaskItem> tasks = LoadTasks();
         FileService fileService = new();
         TaskService taskService = new(fileService.LoadTasks());
@@ -47,7 +48,9 @@ class Program
         {
         Console.WriteLine($"\n\n\nВведите задачу.");
         NameTask = Console.ReadLine();
-        taskService.AddTasks(NameTask);
+        Console.WriteLine($"\n\n\nУкажите приоритет для задачи.");
+        num = ReadInt();
+        taskService.AddTasks(NameTask,num);
         //fileService.SaveTasks(tasks);
         }
         else if (numberMenu == 3) 
@@ -107,6 +110,11 @@ class Program
         taskService.SortTask();
         ////fileService.SaveTasks(tasks);
         }
+        else if (numberMenu == 12) 
+        {
+        taskService.SortTaskPriority();
+        ////fileService.SaveTasks(tasks);
+        }
         else break;
         fileService.SaveTasks(taskService.Tasks);
         }
@@ -125,6 +133,7 @@ class Program
         Console.WriteLine($"9. Показать только невыполненные");
         Console.WriteLine($"10. Статистика");
         Console.WriteLine($"11. Сортировать по дате");
+        Console.WriteLine($"12. Сортировать по приоритету");
         Console.WriteLine("0. Выход\n");
         Console.WriteLine("Ваш выбор: ");
 

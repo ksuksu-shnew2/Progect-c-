@@ -16,13 +16,14 @@ public class FileService
         {
         string[] parts = line.Split('|');
 
-        if (parts.Length >= 3)
+        if (parts.Length >= 4)
         {
         bool isDone = bool.Parse(parts[0]);
         string title = parts[1];
         DateTime created = DateTime.Parse(parts[2]);
+        TypePriority typePriority = Enum.Parse<TypePriority>(parts[3]);
 
-        tasks.Add(new TaskItem(isDone, title)
+        tasks.Add(new TaskItem(isDone, title,typePriority)
         {
             CreatedAt = created
         });
@@ -38,7 +39,7 @@ public class FileService
 
     foreach(TaskItem task in tasks)
     {
-        lines.Add($"{task.IsDone}|{task.Title}|{task.CreatedAt}");
+        lines.Add($"{task.IsDone}|{task.Title}|{task.CreatedAt}|{task.TypePriority}");
     }
 
     File.WriteAllLines(filePath, lines);

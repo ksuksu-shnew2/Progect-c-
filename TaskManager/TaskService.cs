@@ -14,13 +14,26 @@ public class TaskService
         if(Tasks.Count > 0)
         {
         Console.WriteLine($"\n\n\nСписок задач:");
-        for (int i = 0; i < Tasks.Count; i++)
-        {
-            Console.WriteLine($"{i+1}. {Tasks[i]}");
-        }
+      for (int i = 0; i < Tasks.Count; i++)
+{
+    if (Tasks[i].TypePriority == TypePriority.High)
+        Console.ForegroundColor = ConsoleColor.Red;
+
+    else if (Tasks[i].TypePriority == TypePriority.Medium)
+        Console.ForegroundColor = ConsoleColor.Yellow;
+
+    else
+        Console.ForegroundColor = ConsoleColor.Green;
+
+    Console.WriteLine($"{i + 1}. {Tasks[i]}");
+
+    Console.ResetColor();
+}
         }
         else Console.WriteLine($"\n\nСписок задач пуст");
     }
+
+    
 
      public void DoneTasks(int number)
     {
@@ -61,12 +74,13 @@ public class TaskService
         
     }
 
-     public void AddTasks(string name)
+     public void AddTasks(string name,int num)
     {
+        TypePriority priority = (TypePriority)(num - 1);
         if(!string.IsNullOrWhiteSpace(name))
         {
         bool isDone = false; 
-        Tasks.Add(new TaskItem(isDone,name));
+        Tasks.Add(new TaskItem(isDone,name,priority));
         Console.WriteLine($"\n\nЗадача добавлена");
         }
         else Console.WriteLine($"\n\nВы ввели пустую задачу");
@@ -171,6 +185,19 @@ public class TaskService
         .ToList();
 
         Console.WriteLine("Задачи отсортированы по дате");
+        for (int i = 0; i < Tasks.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {Tasks[i]}");
+            }
+    }
+    public void  SortTaskPriority()
+    {
+        
+         Tasks = Tasks
+        .OrderBy(t => t.TypePriority)
+        .ToList();
+
+        Console.WriteLine("Задачи отсортированы по приоритету");
         for (int i = 0; i < Tasks.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {Tasks[i]}");

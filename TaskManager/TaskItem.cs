@@ -7,17 +7,20 @@ public class TaskItem
     public bool IsDone { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    public TaskItem( bool isDone,string title)
+    public TypePriority TypePriority { get; set; }
+
+    public TaskItem( bool isDone,string title,TypePriority typePriority)
     {
         Title = title;
         IsDone = isDone;
         CreatedAt = DateTime.Now;
+        TypePriority = typePriority;
     }
 
     public override string ToString()
     {
         string mark = IsDone ? "Х" : " ";
-        return $"[{mark}] {Title} ({CreatedAt})";
+        return $"[{mark}] {Title} ({CreatedAt}) ({TypePriority})";
     }
     
 }
