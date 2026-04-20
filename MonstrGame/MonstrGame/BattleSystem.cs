@@ -4,8 +4,9 @@ using System.Globalization;
 
 public class BattleSystem
 {
-    Player Player = new();
-    Monster Monster = new();
+    Player 
+     = new ();
+    Monster monster = new();
     public Random rnd = new();
 
     public void StartBattle()
@@ -13,11 +14,11 @@ public class BattleSystem
        
         Console.WriteLine($"\n\n\nТы встретил монстра!");
 
-        while (Player.helfPlayer > 0 && Monster.helfMonster > 0)
+        while (player.helfPlayer > 0 && monster.helfMonster > 0)
         {
             Console.WriteLine($"\nТвой ход! Выбери действие.");
-            Console.WriteLine($"\nИгрок HP: {Player.helfPlayer} / 100\nМонстр HP: {Monster.helfMonster} / 100\nЗелья здоровья: {Player.countHelf}");
-            if(Monster.helfMonster <= 30 && Monster.helfMonster > 0)
+            Console.WriteLine($"\nИгрок HP: {player.helfPlayer} / 100\nМонстр HP: {monster.helfMonster} / 100\nЗелья здоровья: {player.countHelf}");
+            if(monster.helfMonster <= 30 && monster.helfMonster > 0)
             {
                 Console.WriteLine($"\nМонстр выглядит сильно раненым!");
             }
@@ -30,10 +31,10 @@ public class BattleSystem
                 int valueAtaka = rnd.Next(10, 21);
 
                 int crit = rnd.Next(0, 100);
-                Monster.helfMonster = AtacaPlayer(valueAtaka, crit, Monster.helfMonster);
-                //int valueAtaka = Player.valueAtaka;//rnd.Next(10, 21);
+                monster.helfMonster = AtacaPlayer(valueAtaka, crit, monster.helfMonster);
+                //int valueAtaka = player.valueAtaka;//rnd.Next(10, 21);
 
-                //int crit = Player.crit;//rnd.Next(0, 100);
+                //int crit = player.crit;//rnd.Next(0, 100);
 
             }
          else if (numberMenu == 2)
@@ -41,16 +42,16 @@ public class BattleSystem
                 int miss = rnd.Next(0, 100);
                 int crit = rnd.Next(0, 100);
                 int valueAtakaHigh = rnd.Next(20, 36);
-                Monster.helfMonster = AtacaPlayerHigh(valueAtakaHigh, crit,miss, Monster.helfMonster);
+                monster.helfMonster = AtacaPlayerHigh(valueAtakaHigh, crit,miss, monster.helfMonster);
                 //int miss = rnd.Next(0, 100);
         }
         else if (numberMenu == 3)
         {
-                //Player.helfPlayer = HelfPlayer(Player.countHelf, Monster.helfMonster, Player.helfPlayer, Player.helf);
-                Player.Half();
-                //Player.helfPlayer = MinusNull(Player.helfPlayer);
+                //player.helfPlayer = HelfPlayer(player.countHelf, monster.helfMonster, player.helfPlayer, player.helf);
+                player.Half();
+                //player.helfPlayer = MinusNull(player.helfPlayer);
             
-                //Console.WriteLine($"\nТы восстановил {Player.helf} здоровья. У тебя осталось {Player.helfPlayer} здоровья,а у монстра осталось {Monster.helfMonster} здоровья.");
+                //Console.WriteLine($"\nТы восстановил {player.helf} здоровья. У тебя осталось {player.helfPlayer} здоровья,а у монстра осталось {monster.helfMonster} здоровья.");
 
             }
         else if (numberMenu == 0) 
@@ -65,12 +66,12 @@ public class BattleSystem
             }
 
            
-            if (Monster.helfMonster > 0)
+            if (monster.helfMonster > 0)
             {
                 int valueMonstr = rnd.Next(12, 23);
                 int critMonstr = rnd.Next(0, 100);
                 int evasion = rnd.Next(0, 100);
-                Player.helfPlayer = AtacaMonster(valueMonstr, critMonstr, Player.helfPlayer,Monster.helfMonster,evasion);
+                player.helfPlayer = AtacaMonster(valueMonstr, critMonstr, player.helfPlayer,monster.helfMonster,evasion);
             }
 
         // else
@@ -79,11 +80,11 @@ public class BattleSystem
         //     break;
         // }
         }
-        if (Monster.helfMonster <= 0)
+        if (monster.helfMonster <= 0)
             {
                 Console.WriteLine("\nПоздравляем! Ты победил монстра!");
         }
-        else if (Player.helfPlayer <= 0)
+        else if (player.helfPlayer <= 0)
         {
             Console.WriteLine($"\nТы был повержен монстром. Игра окончена.");
         }
@@ -110,9 +111,9 @@ public class BattleSystem
                     valueAtaka *= 2;
                     helfMonster -= valueAtaka;
                     helfMonster = MinusNull(helfMonster);
-            //     if (Monster.helfMonster < 0)
+            //     if (monster.helfMonster < 0)
             // {
-            //     Monster.helfMonster = 0;
+            //     monster.helfMonster = 0;
             // }
                     Console.WriteLine($"\nКритический удар! Ты нанес монстру {valueAtaka} урона. У монстра осталось {helfMonster} здоровья.");
                 }
@@ -120,9 +121,9 @@ public class BattleSystem
                 {
                     helfMonster -= valueAtaka;
                     helfMonster = MinusNull(helfMonster);
-            // if (Monster.helfMonster < 0)
+            // if (monster.helfMonster < 0)
             //     {
-            //         Monster.helfMonster = 0;
+            //         monster.helfMonster = 0;
             //     }
                     Console.WriteLine($"\nТы нанес монстру {valueAtaka} урона. У монстра осталось {helfMonster} здоровья.");
         }
