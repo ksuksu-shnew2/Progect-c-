@@ -4,8 +4,7 @@ using System.Globalization;
 
 public class BattleSystem
 {
-    Player 
-     = new ();
+    Player player = new ();
     Monster monster = new();
     public Random rnd = new();
 
