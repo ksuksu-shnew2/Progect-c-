@@ -1,13 +1,5 @@
 namespace MonstrGame;
 
-public class Monster
+public class Monster : Character
 {
-    public int helfMonster { get; set; }
-    
-
-    public Monster()
-    {
-        helfMonster = 100;
-        
-    }
 }
