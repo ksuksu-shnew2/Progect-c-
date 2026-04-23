@@ -2,7 +2,7 @@ namespace TreasureDungeon;
 
 public class Charecter
 {
-     public int Health = 100;
+     public int Health;
 
     public void TakeDamage(int damage)
     {

@@ -19,7 +19,7 @@ public class GameBattel
         {
             // Console.WriteLine($"\nТвой ход! Выбери действие.");
             // Console.WriteLine($"\nИгрок HP: {player.Health} / 100\nМонстр HP: {monster.Health} / 100\nЗелья здоровья: {player.countHelf}");
-            if(monster.Health <= 30 && monster.Health > 0)
+            if(monster.Health <= 10 && monster.Health > 0)
             {
                 Console.WriteLine($"\nМонстр выглядит сильно раненым!");
             }
@@ -66,7 +66,7 @@ public class GameBattel
            
             if (monster.Health > 0)
             {
-                int damage = rnd.Next(12, 23);
+                int damage = monster.Damage;
                 int critMonstr = rnd.Next(0, 100);
                 int evasion = rnd.Next(0, 100);
                

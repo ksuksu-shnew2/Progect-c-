@@ -2,6 +2,11 @@ namespace TreasureDungeon;
 
 public class Monster : Charecter
 {
-    //public int Health {get; set; }= 100;
+     //Health = 30;
     public int Damage {get; set; } =0;
+
+    public Monster()
+    {
+         Health = 30;
+    }
 }
