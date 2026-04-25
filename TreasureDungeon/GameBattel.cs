@@ -8,7 +8,7 @@ public class GameBattel
     //Player player = new ();
     
 
-    public Random rnd = new();
+    //public Random rnd = new();
 
     public void StartBattle(Player player, Monster monster)
     {
@@ -29,9 +29,9 @@ public class GameBattel
             if (numberMenu == 1)
 
             {
-                int damage = rnd.Next(10, 21);
+                int damage = RandomHelper.Rnd.Next(10, 21);
 
-                int crit = rnd.Next(0, 100);
+                int crit = RandomHelper.Rnd.Next(0, 100);
              
                 TakeDamagePlayer(damage, crit, monster);
              
@@ -39,9 +39,9 @@ public class GameBattel
             }
          else if (numberMenu == 2)
             {
-                int miss = rnd.Next(0, 100);
-                int crit = rnd.Next(0, 100);
-                int damageHigh = rnd.Next(20, 36);
+                int miss = RandomHelper.Rnd.Next(0, 100);
+                int crit = RandomHelper.Rnd.Next(0, 100);
+                int damageHigh = RandomHelper.Rnd.Next(20, 36);
                 
                 TakeDamagePlayerHigh(damageHigh, crit, miss, monster);
                 
@@ -67,8 +67,8 @@ public class GameBattel
             if (monster.Health > 0)
             {
                 int damage = monster.Damage;
-                int critMonstr = rnd.Next(0, 100);
-                int evasion = rnd.Next(0, 100);
+                int critMonstr = RandomHelper.Rnd.Next(0, 100);
+                int evasion = RandomHelper.Rnd.Next(0, 100);
                
                 TakeDamageMonster(damage, critMonstr,  evasion, player);
             }

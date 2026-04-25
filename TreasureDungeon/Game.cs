@@ -3,7 +3,7 @@ namespace TreasureDungeon;
 public class Game
 {
     Player player = new Player();
-    public Random rnd = new();
+    //public Random rnd = new();
 
     //public RoomType roomEvent { get; set; }
 
@@ -16,6 +16,7 @@ public class Game
         while (player.Health > 0)
         {
             Room room = new Room();
+                int Ran;
             countRooms++;
             Console.WriteLine($"\nСледующая комната: {countRooms}");
 
@@ -23,29 +24,66 @@ public class Game
             {
                 Console.WriteLine("Начинается бой!");
                 Monster monster = new();
-                if (countRooms >= 1 && countRooms <= 4)
-                {monster.Health = 30;
-                monster.Damage = rnd.Next(8, 13);
-                Console.WriteLine($"\nМонстр имеет {monster.Health} здоровья и наносит  {monster.Damage} урона.");
+                
+                 if (countRooms % 5 == 0)
+                 {
+                    monster.typeMonster = TypeMonster.Boss;
                 }
-                else if (countRooms >= 5 && countRooms <= 9)
+                else if (countRooms >= 1 && countRooms <= 4)
                 {
-                    monster.Health = 40;
-                    monster.Damage = rnd.Next(10, 14);
-                    Console.WriteLine($"\nМонстр имеет {monster.Health} здоровья и наносит  {monster.Damage} урона.");
+                    Ran = RandomHelper.Rnd.Next(0, 100);
+                    if (Ran < 70)
+                    {
+                        monster.typeMonster = TypeMonster.Goblin;
+
+                    }
+                    else if (Ran >= 70 && Ran < 100)
+                    {
+                        monster.typeMonster = TypeMonster.Skeleton;  
+                    }
                 }
-                else if (countRooms >= 10 && countRooms <= 14)
+                else if (countRooms >= 6 && countRooms <= 9)
                 {
-                    monster.Health = 50;
-                    monster.Damage = rnd.Next(12, 28);
-                    Console.WriteLine($"\nМонстр имеет {monster.Health} здоровья и наносит  {monster.Damage} урона.");
+                    {
+                    Ran = RandomHelper.Rnd.Next(0, 100);
+                    if (Ran < 40)
+                    {
+                        monster.typeMonster = TypeMonster.Goblin;
+
+                    }
+                    else if (Ran >= 40 && Ran < 80)
+                    {
+                        monster.typeMonster = TypeMonster.Skeleton;  
+                    }
+                    else if (Ran >= 80 && Ran < 100)
+                    {
+                        monster.typeMonster = TypeMonster.Orc;  
+                    }
+                    }
                 }
-                else if (countRooms >= 15)
+                
+                else if (countRooms > 10)
                 {
-                    monster.Health = 70;
-                    monster.Damage = rnd.Next(15, 22);
-                    Console.WriteLine($"\nМонстр имеет {monster.Health} здоровья и наносит  {monster.Damage} урона.");
+                   {
+                    Ran = rnd.Next(0, 100);
+                    if (Ran < 30)
+                    {
+                        monster.typeMonster = TypeMonster.Skeleton;
+                    }
+                    else if (Ran >= 30 && Ran < 80)
+                    {
+                        monster.typeMonster = TypeMonster.Orc;  
+                        
+                    }
+                    else if (Ran >= 80 && Ran < 100)
+                    {
+                        monster.typeMonster = TypeMonster.BossOrc;   
+                    }
+                    }
                 }
+                monster.SetStatsByType();
+                Console.WriteLine($"Тебе выпал монстр {monster.typeMonster} с {monster.Health} здоровье и наносит {monster.Damage} урона.");
+
                 gameBattel.StartBattle(player, monster);
             }
 
@@ -70,4 +108,9 @@ public class Game
 
         Console.WriteLine($"\nИгра окончена! Ты прошел {countRooms} комнат.");
     }
+
+    public static class RandomHelper
+        {
+            public static readonly Random Rnd = new();
+        }
 }

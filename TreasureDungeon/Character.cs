@@ -1,8 +1,8 @@
 namespace TreasureDungeon;
 
-public class Charecter
+public class Character
 {
-     public int Health;
+     public int Health { get; set; }
 
     public void TakeDamage(int damage)
     {

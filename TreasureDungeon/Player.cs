@@ -1,6 +1,6 @@
 namespace TreasureDungeon;
 
-public class Player : Charecter
+public class Player : Character
 {
     public int Gold { get; set; } = 0;
 
