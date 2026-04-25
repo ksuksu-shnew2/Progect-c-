@@ -3,7 +3,7 @@ namespace TreasureDungeon;
 
 using System.Globalization;
 
-public class GameBattel
+public class GameBattle
 {
         private const int CritChance = 5;
         private const int MonsterCritChance = 15;
@@ -34,7 +34,7 @@ public class GameBattel
             if (numberMenu == 1)
 
             {
-                int damage = RandomHelper.Rnd.Next(monster.MinDamage, monster.MaxDamage + 1);
+                int damage = RandomHelper.Rnd.Next(10, 21);
 
                 int crit = RandomHelper.Rnd.Next(0, 100);
              
@@ -68,7 +68,7 @@ public class GameBattel
 
             if (monster.Health > 0)
             {
-                int damage = monster.Damage;
+                int damage = RandomHelper.Rnd.Next(monster.MinDamage, monster.MaxDamage + 1);
                 int critMonstr = RandomHelper.Rnd.Next(0, 100);
                 int evasion = RandomHelper.Rnd.Next(0, 100);
                

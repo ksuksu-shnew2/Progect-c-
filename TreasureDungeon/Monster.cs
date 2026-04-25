@@ -3,7 +3,7 @@ namespace TreasureDungeon;
 public class Monster : Character
 {
      //Health = 30;
-    public int Damage {get; set; } =0;
+    
     public TypeMonster typeMonster { get; set; }
     public int MaxDamage { get; set; }
     public int MinDamage { get; set; }

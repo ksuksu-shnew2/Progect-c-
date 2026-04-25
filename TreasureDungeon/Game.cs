@@ -7,7 +7,7 @@ public class Game
 
     //public RoomType roomEvent { get; set; }
 
-    GameBattel gameBattel = new GameBattel();
+    GameBattle GameBattle = new GameBattle();
 
     int countRooms = 0;
 
@@ -60,66 +60,11 @@ public class Game
                                 monster.typeMonster = TypeMonster.BossOrc;
                             break;
                     }
-                //  if (countRooms % 5 == 0)
-                //  {
-                //     monster.typeMonster = TypeMonster.Boss;
-                // }
-                // else if (countRooms >= 1 && countRooms <= 4)
-                // {
-                //     Ran = RandomHelper.Rnd.Next(0, 100);
-                //     if (Ran < 70)
-                //     {
-                //         monster.typeMonster = TypeMonster.Goblin;
-
-                //     }
-                //     else if (Ran >= 70)
-                //     {
-                //         monster.typeMonster = TypeMonster.Skeleton;  
-                //     }
-                // }
-                // else if (countRooms >= 6 && countRooms <= 9)
-                // {
-                    
-                //     Ran = RandomHelper.Rnd.Next(0, 100);
-                //     if (Ran < 40)
-                //     {
-                //         monster.typeMonster = TypeMonster.Goblin;
-
-                //     }
-                //     else if (Ran >= 40 && Ran < 80)
-                //     {
-                //         monster.typeMonster = TypeMonster.Skeleton;  
-                //     }
-                //     else if (Ran >= 80)
-                //     {
-                //         monster.typeMonster = TypeMonster.Orc;  
-                //     }
-                    
-                // }
-                
-                // else if (countRooms > 10)
-                // {
-                   
-                //     Ran = RandomHelper.Rnd.Next(0, 100);
-                //     if (Ran < 30)
-                //     {
-                //         monster.typeMonster = TypeMonster.Skeleton;
-                //     }
-                //     else if (Ran >= 30 && Ran < 80)
-                //     {
-                //         monster.typeMonster = TypeMonster.Orc;  
-                        
-                //     }
-                //     else if (Ran >= 80)
-                //     {
-                //         monster.typeMonster = TypeMonster.BossOrc;   
-                //     }
-                    
-                // }
+               
                 monster.SetStatsByType();
-                Console.WriteLine($"Тебе выпал монстр {monster.typeMonster} с {monster.Health} здоровье и наносит {monster.Damage} урона.");
+                Console.WriteLine($"Тебе выпал монстр {monster.typeMonster} с {monster.Health} здоровье и наносит {monster.MinDamage}-{monster.MaxDamage} урона.");
 
-                gameBattel.StartBattle(player, monster);
+                GameBattle.StartBattle(player, monster);
             }
 
             else if (room.roomEvent == RoomType.Gold)
