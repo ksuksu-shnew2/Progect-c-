@@ -10,9 +10,9 @@ class Program
     static void Main()
     {
         //int numberMenu;
-        //int helfmonster = 100;
-        //int Player.helfPlayer = 100;
-        //int Player.countHelf= 3;
+        //int HealthAmountmonster = 100;
+        //int Player.HealthAmountPlayer = 100;
+        //int Player.countHealthAmount= 3;
         Console.Clear();
         Player Player = new();
         Monster Monster = new();
@@ -22,14 +22,14 @@ class Program
      //   Console.WriteLine($"\n\n\nТы встретил монстра!");
 
         //Random rnd = new();
-        //intPlayer.helf= 10;
+        //intPlayer.HealthAmount= 10;
 
 
-        // while (Player.helfPlayer > 0 && Monster.helfMonster > 0)
+        // while (Player.HealthAmountPlayer > 0 && Monster.HealthAmountMonster > 0)
         // {
         //     Console.WriteLine($"\nТвой ход! Выбери действие.");
-        //     Console.WriteLine($"\nИгрок HP: {Player.helfPlayer} / 100\nМонстр HP: {Monster.helfMonster} / 100\nЗелья здоровья: {Player.countHelf}");
-        //     if(Monster.helfMonster <= 30 && Monster.helfMonster > 0)
+        //     Console.WriteLine($"\nИгрок HP: {Player.HealthAmountPlayer} / 100\nМонстр HP: {Monster.HealthAmountMonster} / 100\nЗелья здоровья: {Player.countHealthAmount}");
+        //     if(Monster.HealthAmountMonster <= 30 && Monster.HealthAmountMonster > 0)
         //     {
         //         Console.WriteLine($"\nМонстр выглядит сильно раненым!");
         //     }
@@ -44,28 +44,28 @@ class Program
         //         if(Player.crit<5)
         //         {
         //             Player.valueAtaka *= 2;
-        //             Monster.helfMonster -= Player.valueAtaka;
-        //             if (Monster.helfMonster < 0)
+        //             Monster.HealthAmountMonster -= Player.valueAtaka;
+        //             if (Monster.HealthAmountMonster < 0)
         //         {
-        //             Monster.helfMonster = 0;
+        //             Monster.HealthAmountMonster = 0;
         //         }
-        //             Console.WriteLine($"\nКритический удар! Ты нанес монстру {Player.valueAtaka} урона. У монстра осталось {Monster.helfMonster} здоровья.");
+        //             Console.WriteLine($"\nКритический удар! Ты нанес монстру {Player.valueAtaka} урона. У монстра осталось {Monster.HealthAmountMonster} здоровья.");
         //         }
         //         else
         //         {
-        //             Monster.helfMonster -= Player.valueAtaka;
-        //               if (Monster.helfMonster < 0)
+        //             Monster.HealthAmountMonster -= Player.valueAtaka;
+        //               if (Monster.HealthAmountMonster < 0)
         //         {
-        //             Monster.helfMonster = 0;
+        //             Monster.HealthAmountMonster = 0;
         //         }
-        //             Console.WriteLine($"\nТы нанес монстру {Player.valueAtaka} урона. У монстра осталось {Monster.helfMonster} здоровья.");
+        //             Console.WriteLine($"\nТы нанес монстру {Player.valueAtaka} урона. У монстра осталось {Monster.HealthAmountMonster} здоровья.");
         //         }
         // }
         // else if (numberMenu == 2)
         //     {
         //         //int miss = rnd.Next(0, 100);
         //         if (Player.miss < 30)
-        //             Console.WriteLine($"\nТы промахнулся! Монстр не получил урона. У монстра осталось {Monster.helfMonster} здоровья.");
+        //             Console.WriteLine($"\nТы промахнулся! Монстр не получил урона. У монстра осталось {Monster.HealthAmountMonster} здоровья.");
         //         else
         //         {
         //             int valueAtakaHigh = rnd.Next(20, 36);
@@ -74,21 +74,21 @@ class Program
         //         if(Player.crit<15)
         //         {
         //             Player.valueAtakaHigh *= 2;
-        //                 Monster.helfMonster -= Player.valueAtakaHigh;
-        //                   if (Monster.helfMonster < 0)
+        //                 Monster.HealthAmountMonster -= Player.valueAtakaHigh;
+        //                   if (Monster.HealthAmountMonster < 0)
         //         {
-        //             Monster.helfMonster = 0;
+        //             Monster.HealthAmountMonster = 0;
         //         }
-        //                 Console.WriteLine($"\nКритический удар! Ты нанес монстру {Player.valueAtakaHigh} урона. У монстра осталось {Monster.helfMonster} здоровья.");
+        //                 Console.WriteLine($"\nКритический удар! Ты нанес монстру {Player.valueAtakaHigh} урона. У монстра осталось {Monster.HealthAmountMonster} здоровья.");
         //         }
         //         else
         //             {
-        //                 Monster.helfMonster -= Player.valueAtakaHigh;
+        //                 Monster.HealthAmountMonster -= Player.valueAtakaHigh;
 
-        //         if (Monster.helfMonster < 0)
+        //         if (Monster.HealthAmountMonster < 0)
         //         {
-        //             Monster.helfMonster = 0;
-        //         }                Console.WriteLine($"\nТы нанес монстру {Player.valueAtakaHigh} урона. У монстра осталось {Monster.helfMonster} здоровья.");
+        //             Monster.HealthAmountMonster = 0;
+        //         }                Console.WriteLine($"\nТы нанес монстру {Player.valueAtakaHigh} урона. У монстра осталось {Monster.HealthAmountMonster} здоровья.");
         //         }
 
         //         }
@@ -96,28 +96,28 @@ class Program
         // }
         // else if (numberMenu == 3)
         // {
-        //         if (Player.countHelf<= 0)
+        //         if (Player.countHealthAmount<= 0)
         //         {
         //             Console.WriteLine($"\nУ тебя закончились зелья здоровья! Выбери другое действие.");
         //             continue;
         //         }
-        //         else if (Player.helfPlayer == 100)
+        //         else if (Player.HealthAmountPlayer == 100)
         //         {
         //             Console.WriteLine($"\nУ тебя полное здоровье! Выбери другое действие.");
         //             continue;
         //         }
         //         else
         //         {
-        //             Player.helfPlayer += Player.helf;
-        //             Player.countHelf--;
-        //             Console.WriteLine($"\nТы использовал зелье здоровья. Осталось: {Player.countHelf}");
+        //             Player.HealthAmountPlayer += Player.HealthAmount;
+        //             Player.countHealthAmount--;
+        //             Console.WriteLine($"\nТы использовал зелье здоровья. Осталось: {Player.countHealthAmount}");
         //         }
                 
-        //         if (Player.helfPlayer > 100)
+        //         if (Player.HealthAmountPlayer > 100)
         //         {
-        //             Player.helfPlayer = 100;
+        //             Player.HealthAmountPlayer = 100;
         //         }
-        //         Console.WriteLine($"\nТы восстановил {Player.helf} здоровья. У тебя осталось {Player.helfPlayer} здоровья,а у монстра осталось {helfmonster} здоровья.");
+        //         Console.WriteLine($"\nТы восстановил {Player.HealthAmount} здоровья. У тебя осталось {Player.HealthAmountPlayer} здоровья,а у монстра осталось {HealthAmountmonster} здоровья.");
         // }
         // else if (numberMenu == 0) 
         // {
@@ -129,7 +129,7 @@ class Program
         //     Console.WriteLine($"\nНекорректный выбор. Попробуй снова.");
         //     continue;
         // }
-        // if (Monster.helfMonster > 0)
+        // if (Monster.HealthAmountMonster > 0)
         // {
         //         Monster.valueMonstr = rnd.Next(12, 23);
         //         Monster.critMonstr = rnd.Next(0, 100);
@@ -147,12 +147,12 @@ class Program
         //         }
         //         else
         //         {
-        //             Player.helfPlayer -= Monster.valueMonstr;
-        //         if (Player.helfPlayer < 0)
+        //             Player.HealthAmountPlayer -= Monster.valueMonstr;
+        //         if (Player.HealthAmountPlayer < 0)
         //         {
-        //             Player.helfPlayer = 0;
+        //             Player.HealthAmountPlayer = 0;
         //         }
-        //         Console.WriteLine($"\nМонстр атакует тебя и наносит {Monster.valueMonstr} урона. У тебя осталось {Player.helfPlayer} здоровья.");
+        //         Console.WriteLine($"\nМонстр атакует тебя и наносит {Monster.valueMonstr} урона. У тебя осталось {Player.HealthAmountPlayer} здоровья.");
         //         }
         // }
 
@@ -161,7 +161,7 @@ class Program
         //     Console.WriteLine($"\nПоздравляем! Ты победил монстра!");
         //     break;
         // }
-        // if (Player.helfPlayer <= 0)
+        // if (Player.HealthAmountPlayer <= 0)
         // {
         //     Console.WriteLine($"\nТы был повержен монстром. Игра окончена.");
         //         break;

@@ -18,7 +18,7 @@ public class BattleSystem
         while (player.Health > 0 && monster.Health > 0)
         {
             Console.WriteLine($"\nТвой ход! Выбери действие.");
-            Console.WriteLine($"\nИгрок HP: {player.Health} / 100\nМонстр HP: {monster.Health} / 100\nЗелья здоровья: {player.countHelf}");
+            Console.WriteLine($"\nИгрок HP: {player.Health} / 100\nМонстр HP: {monster.Health} / 100\nЗелья здоровья: {player.countHealthAmount}");
             if(monster.Health <= 30 && monster.Health > 0)
             {
                 Console.WriteLine($"\nМонстр выглядит сильно раненым!");

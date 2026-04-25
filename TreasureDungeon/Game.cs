@@ -16,7 +16,9 @@ public class Game
         while (player.Health > 0)
         {
             Room room = new Room();
-                int Ran;
+            //var roomEvent = room.GenerateRoomEvent();
+            Console.WriteLine($"\nТебе выпало {room.roomEvent}");
+            int Ran;
             countRooms++;
             Console.WriteLine($"\nСледующая комната: {countRooms}");
 
@@ -25,62 +27,95 @@ public class Game
                 Console.WriteLine("Начинается бой!");
                 Monster monster = new();
                 
-                 if (countRooms % 5 == 0)
-                 {
-                    monster.typeMonster = TypeMonster.Boss;
-                }
-                else if (countRooms >= 1 && countRooms <= 4)
-                {
-                    Ran = RandomHelper.Rnd.Next(0, 100);
-                    if (Ran < 70)
+                switch (countRooms)
                     {
-                        monster.typeMonster = TypeMonster.Goblin;
+                        case int n when n % 5 == 0:
+                            monster.typeMonster = TypeMonster.Boss;
+                            break;
 
-                    }
-                    else if (Ran >= 70 && Ran < 100)
-                    {
-                        monster.typeMonster = TypeMonster.Skeleton;  
-                    }
-                }
-                else if (countRooms >= 6 && countRooms <= 9)
-                {
-                    {
-                    Ran = RandomHelper.Rnd.Next(0, 100);
-                    if (Ran < 40)
-                    {
-                        monster.typeMonster = TypeMonster.Goblin;
+                        case int n when n <= 4:
+                            Ran = RandomHelper.Rnd.Next(0, 100);
+                            monster.typeMonster = Ran < 70 
+                                ? TypeMonster.Goblin 
+                                : TypeMonster.Skeleton;
+                            break;
 
+                        case int n when n <= 9:
+                            Ran = RandomHelper.Rnd.Next(0, 100);
+                            if (Ran < 40)
+                                monster.typeMonster = TypeMonster.Goblin;
+                            else if (Ran < 80)
+                                monster.typeMonster = TypeMonster.Skeleton;
+                            else
+                                monster.typeMonster = TypeMonster.Orc;
+                            break;
+
+                        default: // 10+ (кроме боссов)
+                            Ran = RandomHelper.Rnd.Next(0, 100);
+                            if (Ran < 30)
+                                monster.typeMonster = TypeMonster.Skeleton;
+                            else if (Ran < 80)
+                                monster.typeMonster = TypeMonster.Orc;
+                            else
+                                monster.typeMonster = TypeMonster.BossOrc;
+                            break;
                     }
-                    else if (Ran >= 40 && Ran < 80)
-                    {
-                        monster.typeMonster = TypeMonster.Skeleton;  
-                    }
-                    else if (Ran >= 80 && Ran < 100)
-                    {
-                        monster.typeMonster = TypeMonster.Orc;  
-                    }
-                    }
-                }
+                //  if (countRooms % 5 == 0)
+                //  {
+                //     monster.typeMonster = TypeMonster.Boss;
+                // }
+                // else if (countRooms >= 1 && countRooms <= 4)
+                // {
+                //     Ran = RandomHelper.Rnd.Next(0, 100);
+                //     if (Ran < 70)
+                //     {
+                //         monster.typeMonster = TypeMonster.Goblin;
+
+                //     }
+                //     else if (Ran >= 70)
+                //     {
+                //         monster.typeMonster = TypeMonster.Skeleton;  
+                //     }
+                // }
+                // else if (countRooms >= 6 && countRooms <= 9)
+                // {
+                    
+                //     Ran = RandomHelper.Rnd.Next(0, 100);
+                //     if (Ran < 40)
+                //     {
+                //         monster.typeMonster = TypeMonster.Goblin;
+
+                //     }
+                //     else if (Ran >= 40 && Ran < 80)
+                //     {
+                //         monster.typeMonster = TypeMonster.Skeleton;  
+                //     }
+                //     else if (Ran >= 80)
+                //     {
+                //         monster.typeMonster = TypeMonster.Orc;  
+                //     }
+                    
+                // }
                 
-                else if (countRooms > 10)
-                {
-                   {
-                    Ran = rnd.Next(0, 100);
-                    if (Ran < 30)
-                    {
-                        monster.typeMonster = TypeMonster.Skeleton;
-                    }
-                    else if (Ran >= 30 && Ran < 80)
-                    {
-                        monster.typeMonster = TypeMonster.Orc;  
+                // else if (countRooms > 10)
+                // {
+                   
+                //     Ran = RandomHelper.Rnd.Next(0, 100);
+                //     if (Ran < 30)
+                //     {
+                //         monster.typeMonster = TypeMonster.Skeleton;
+                //     }
+                //     else if (Ran >= 30 && Ran < 80)
+                //     {
+                //         monster.typeMonster = TypeMonster.Orc;  
                         
-                    }
-                    else if (Ran >= 80 && Ran < 100)
-                    {
-                        monster.typeMonster = TypeMonster.BossOrc;   
-                    }
-                    }
-                }
+                //     }
+                //     else if (Ran >= 80)
+                //     {
+                //         monster.typeMonster = TypeMonster.BossOrc;   
+                //     }
+                    
+                // }
                 monster.SetStatsByType();
                 Console.WriteLine($"Тебе выпал монстр {monster.typeMonster} с {monster.Health} здоровье и наносит {monster.Damage} урона.");
 
@@ -94,7 +129,7 @@ public class Game
 
             else if (room.roomEvent == RoomType.Potion)
             {
-                player.Heal();
+                player.Healh();
             }
 
             else
@@ -109,8 +144,5 @@ public class Game
         Console.WriteLine($"\nИгра окончена! Ты прошел {countRooms} комнат.");
     }
 
-    public static class RandomHelper
-        {
-            public static readonly Random Rnd = new();
-        }
+    
 }

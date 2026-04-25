@@ -4,8 +4,8 @@ public class Player : Character
 {
     public int Gold { get; set; } = 0;
 
-    public int helf { get; set; } = 10;
-    //public int countHelf { get; set; } = 3;
+    public int HealthAmount { get; set; } = 10;
+    public int countHealthAmount { get; set; } = 5;
 
      public Player()
     {
@@ -19,9 +19,18 @@ public class Player : Character
 
     }
 
-    public void Heal()
+    public void Healh()
     {
-
+        if (countHealthAmount <= 0)
+        {
+            Console.WriteLine($"\nУ тебя нет зелья здоровья! Выбери другое действие.");
+        }
+         else if (Health <= 0)
+        {
+            Console.WriteLine($"\nТы уже мертв! Игра окончена.");
+        }
+         else if (Health > 0 && Health < 100)
+        {
         if (Health == 100)
                 {
                     Console.WriteLine($"\nУ тебя полное здоровье! Выбери другое действие.");
@@ -30,8 +39,8 @@ public class Player : Character
         {
             
             
-            Health += helf;
-            //countHelf--;
+            Health += HealthAmount;
+            countHealthAmount--;
             if (Health > 100)
             {
                 Health = 100;
@@ -39,9 +48,10 @@ public class Player : Character
             
         
             Console.WriteLine($"\nТы использовал зелье здоровья.");
-            Console.WriteLine($"\nТы восстановил {helf} здоровья. У тебя осталось {Health} здоровья");
+            Console.WriteLine($"\nТы восстановил {HealthAmount} здоровья. У тебя осталось {Health} здоровья");
         }
         }
-        //helfPlayer = MinusNull(helfPlayer);
+        //HealthAmountPlayer = MinusNull(HealthAmountPlayer);
+    }
 }
 

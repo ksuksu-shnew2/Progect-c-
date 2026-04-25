@@ -5,6 +5,10 @@ using System.Globalization;
 
 public class GameBattel
 {
+        private const int CritChance = 5;
+        private const int MonsterCritChance = 15;
+        private const int EvasionChance = 10;
+        private const int MissChance = 30;
     //Player player = new ();
     
 
@@ -13,12 +17,13 @@ public class GameBattel
     public void StartBattle(Player player, Monster monster)
     {
         
+        
         Console.WriteLine($"\n\n\nТы встретил монстра!");
 
         while (player.Health > 0 && monster.Health > 0)
         {
             // Console.WriteLine($"\nТвой ход! Выбери действие.");
-            // Console.WriteLine($"\nИгрок HP: {player.Health} / 100\nМонстр HP: {monster.Health} / 100\nЗелья здоровья: {player.countHelf}");
+            // Console.WriteLine($"\nИгрок HP: {player.Health} / 100\nМонстр HP: {monster.Health} / 100\nЗелья здоровья: {player.countHealthAmount}");
             if(monster.Health <= 10 && monster.Health > 0)
             {
                 Console.WriteLine($"\nМонстр выглядит сильно раненым!");
@@ -35,7 +40,6 @@ public class GameBattel
              
                 TakeDamagePlayer(damage, crit, monster);
              
-
             }
          else if (numberMenu == 2)
             {
@@ -47,9 +51,8 @@ public class GameBattel
                 
             }
         else if (numberMenu == 3)
-        {
-               
-                player.Heal();
+            { 
+                player.Healh();
                 
             }
         else if (numberMenu == 0) 
@@ -58,12 +61,11 @@ public class GameBattel
             break;
         }
         else 
-        {
+            {
             Console.WriteLine($"\nНекорректный выбор. Попробуй снова.");
             continue;
             }
 
-           
             if (monster.Health > 0)
             {
                 int damage = monster.Damage;
@@ -99,7 +101,7 @@ public class GameBattel
 
     internal  void TakeDamagePlayer(int damage, int crit, Monster monster)
     {
-                 if(crit<5)
+                 if(crit<CritChance)
                 {
                     damage *= 2;
                     monster.TakeDamage(damage);
@@ -117,33 +119,32 @@ public class GameBattel
     }
     internal  void TakeDamageMonster(int damage, int critMonstr, int evasion, Player player)
     {
-        if (critMonstr < 15)
+        
+         if (evasion < EvasionChance)
+                {
+                    Console.WriteLine($"\nТы уклонился от атаки монстра!");
+                    return;
+                }
+        if (critMonstr < MonsterCritChance)
                 {
                     damage = damage*2;
                     Console.WriteLine($"\nУ монстра усиленный удар!");
 
                 }
-                if (evasion < 10)
-                {
-                    Console.WriteLine($"\nТы уклонился от атаки монстра!");
-
-                }
-                else
-                {
                 player.TakeDamage(damage);
                  
                 Console.WriteLine($"\nМонстр атакует тебя и наносит {damage} урона. У тебя осталось {player.Health} здоровья.");
         }
    
 
-    }
+    
     internal  void TakeDamagePlayerHigh(int damageHigh, int crit,int miss,Monster monster)
     {
-          if (miss < 30)
+          if (miss < MissChance)
                     Console.WriteLine($"\nТы промахнулся! Монстр не получил урона. У монстра осталось {monster.Health} здоровья.");
                 else
                 {
-                if(crit<15)
+                if(crit<CritChance)
                 {
                     damageHigh *= 2;
                
@@ -163,6 +164,7 @@ public class GameBattel
    
 
     }
+
 
     static int ReadInt()
     {

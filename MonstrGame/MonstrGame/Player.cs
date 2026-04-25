@@ -2,9 +2,9 @@ namespace MonstrGame;
 
 public class Player : Character
 {
-    ///public int helfPlayer { get; set; }
-    public int helf {get; set; }
-    public int countHelf {get; set; }
+    ///public int HealthAmountPlayer { get; set; }
+    public int HealthAmount {get; set; }
+    public int countHealthAmount {get; set; }
    
 
 
@@ -12,13 +12,13 @@ public class Player : Character
     {
         
        
-        helf = 10;
-        countHelf = 3;
+        HealthAmount = 10;
+        countHealthAmount = 3;
        
     }
     public void Half()
     {
-        if (countHelf<= 0)
+        if (countHealthAmount<= 0)
                 {
                     Console.WriteLine($"\nУ тебя закончились зелья здоровья! Выбери другое действие.");
                 }
@@ -30,17 +30,17 @@ public class Player : Character
         {
             
             
-            Health += helf;
-            countHelf--;
+            Health += HealthAmount;
+            countHealthAmount--;
             if (Health > 100)
             {
                 Health = 100;
             }
             
         }
-            Console.WriteLine($"\nТы использовал зелье здоровья. Осталось: {countHelf}");
-            Console.WriteLine($"\nТы восстановил {helf} здоровья. У тебя осталось {Health} здоровья");
+            Console.WriteLine($"\nТы использовал зелье здоровья. Осталось: {countHealthAmount}");
+            Console.WriteLine($"\nТы восстановил {HealthAmount} здоровья. У тебя осталось {Health} здоровья");
         }
-        //helfPlayer = MinusNull(helfPlayer);
+        //HealthAmountPlayer = MinusNull(HealthAmountPlayer);
 }
 
