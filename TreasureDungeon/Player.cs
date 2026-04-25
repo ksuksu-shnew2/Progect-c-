@@ -19,7 +19,7 @@ public class Player : Character
 
     }
 
-    public void Healh()
+    public void UseHealthPotion()
     {
         if (countHealthAmount <= 0)
         {
@@ -29,9 +29,8 @@ public class Player : Character
         {
             Console.WriteLine($"\nТы уже мертв! Игра окончена.");
         }
-         else if (Health > 0 && Health < 100)
-        {
-        if (Health == 100)
+        
+        else if (Health == 100)
                 {
                     Console.WriteLine($"\nУ тебя полное здоровье! Выбери другое действие.");
                 }
@@ -52,6 +51,6 @@ public class Player : Character
         }
         }
         //HealthAmountPlayer = MinusNull(HealthAmountPlayer);
-    }
-}
+ }
+
 

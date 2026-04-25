@@ -34,7 +34,7 @@ public class GameBattel
             if (numberMenu == 1)
 
             {
-                int damage = RandomHelper.Rnd.Next(10, 21);
+                int damage = RandomHelper.Rnd.Next(monster.MinDamage, monster.MaxDamage + 1);
 
                 int crit = RandomHelper.Rnd.Next(0, 100);
              
@@ -52,7 +52,7 @@ public class GameBattel
             }
         else if (numberMenu == 3)
             { 
-                player.Healh();
+                player.UseHealthPotion();
                 
             }
         else if (numberMenu == 0) 
@@ -134,7 +134,7 @@ public class GameBattel
                 player.TakeDamage(damage);
                  
                 Console.WriteLine($"\nМонстр атакует тебя и наносит {damage} урона. У тебя осталось {player.Health} здоровья.");
-        }
+    }
    
 
     

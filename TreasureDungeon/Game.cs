@@ -129,7 +129,7 @@ public class Game
 
             else if (room.roomEvent == RoomType.Potion)
             {
-                player.Healh();
+                player.UseHealthPotion();
             }
 
             else
