@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonstrGame", "MonstrGame\Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreasureDungeon", "TreasureDungeon\TreasureDungeon.csproj", "{3DF1D53A-3BBE-478D-B449-BB47A76A2B90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeGame", "SnakeGame\SnakeGame.csproj", "{A10E872C-E010-4341-994F-6279051241DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,7 +83,11 @@ Global
 		{3DF1D53A-3BBE-478D-B449-BB47A76A2B90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DF1D53A-3BBE-478D-B449-BB47A76A2B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DF1D53A-3BBE-478D-B449-BB47A76A2B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DF1D53A-3BBE-478D-B449-BB47A76A2B90}.Release|Any CPU.Build.0 = Release|Any CPUEndGlobalSection
+		{3DF1D53A-3BBE-478D-B449-BB47A76A2B90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10E872C-E010-4341-994F-6279051241DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10E872C-E010-4341-994F-6279051241DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10E872C-E010-4341-994F-6279051241DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10E872C-E010-4341-994F-6279051241DD}.Release|Any CPU.Build.0 = Release|Any CPUEndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
