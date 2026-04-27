@@ -46,7 +46,7 @@ public class Game
             Draw();
             Console.WriteLine($"Score: {score}");
 
-            Thread.Sleep(800);
+            Thread.Sleep(500);
         }
     }
 
