@@ -45,12 +45,7 @@ public class Game
                 //int i = 0;
                 foreach (var guard in guards)
                 {
-                Position newPositionGuard = new Position(guard.Pos.X, guard.Pos.Y);
-
-                if (guard.DirectionGuard == Direction.Right) newPositionGuard.X++;
-                else if (guard.DirectionGuard == Direction.Left) newPositionGuard.X--;
-                else if (guard.DirectionGuard == Direction.Up) newPositionGuard.Y--;
-                else if (guard.DirectionGuard == Direction.Down) newPositionGuard.Y++;
+                
                 // if(IsWallCollision(newPositionGuard))
                 // {
                 //     if (guard.DirectionGuard == Direction.Right) guard.DirectionGuard = Direction.Left;
@@ -65,7 +60,9 @@ public class Game
                 //    // i++;
                 // }
 
-                guard.MoveGuard(newPositionGuard, width, height);
+                //guard.MoveGuard(newPositionGuard, width, height);
+
+                guard.MoveGuard(width, height);
                 
                 }
                 

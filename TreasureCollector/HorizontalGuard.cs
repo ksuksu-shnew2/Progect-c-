@@ -9,10 +9,16 @@ public class HorizontalGuard: Guard
     {
         DirectionGuard = Direction.Right;
     }
-    public override void MoveGuard(Position position, int width, int height)
+    public override void MoveGuard(int width, int height)
     {
-         bool hitWall = position.X == 0 || position.X == width - 1 
-                || position.Y == 0 || position.Y == height - 1;
+        Position newPositionGuard = new Position(Pos.X, Pos.Y);
+
+                if (DirectionGuard == Direction.Right) newPositionGuard.X++;
+                else if (DirectionGuard == Direction.Left) newPositionGuard.X--;
+                else if (DirectionGuard == Direction.Up) newPositionGuard.Y--;
+                else if (DirectionGuard == Direction.Down) newPositionGuard.Y++;
+         bool hitWall = newPositionGuard.X == 0 || newPositionGuard.X == width - 1 
+                || newPositionGuard.Y == 0 || newPositionGuard.Y == height - 1;
         if (hitWall)
         {   if (DirectionGuard == Direction.Right) DirectionGuard = Direction.Left;
             else if (DirectionGuard == Direction.Left) DirectionGuard = Direction.Right;
@@ -21,7 +27,7 @@ public class HorizontalGuard: Guard
         }   
         else
         {
-            Pos = position;
+            Pos = newPositionGuard;
         }    
     }
 }
