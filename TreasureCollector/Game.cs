@@ -4,6 +4,7 @@ public class Game
 {
     Player player = new Player(10, 5);
     List<Treasure> treasures = new List<Treasure>();
+    List<Guard> guards = new List<Guard>();
 
     int width = 20;
     int height = 10;
@@ -13,6 +14,7 @@ public class Game
     public void Start()
     {
            SpawnTreasures();
+           SpawnGuards();
             
             while (true)
            {
@@ -25,6 +27,7 @@ public class Game
                 else if (player.Direction == Direction.Up) newPositionPlayer.Y--;
                 else if (player.Direction == Direction.Down) newPositionPlayer.Y++;
 
+              
                 
                 if (IsWallCollision(newPositionPlayer))
                 {
@@ -38,6 +41,45 @@ public class Game
                 player.Move(newPositionPlayer);
                 move++;
                 }
+           
+                //int i = 0;
+                foreach (var guard in guards)
+                {
+                Position newPositionGuard = new Position(guard.Pos.X, guard.Pos.Y);
+
+                if (guard.DirectionGuard == Direction.Right) newPositionGuard.X++;
+                else if (guard.DirectionGuard == Direction.Left) newPositionGuard.X--;
+                else if (guard.DirectionGuard == Direction.Up) newPositionGuard.Y--;
+                else if (guard.DirectionGuard == Direction.Down) newPositionGuard.Y++;
+                // if(IsWallCollision(newPositionGuard))
+                // {
+                //     if (guard.DirectionGuard == Direction.Right) guard.DirectionGuard = Direction.Left;
+                //     else if (guard.DirectionGuard == Direction.Left) guard.DirectionGuard = Direction.Right;
+                //     else if (guard.DirectionGuard == Direction.Up) guard.DirectionGuard = Direction.Down;
+                //     else if (guard.DirectionGuard == Direction.Down) guard.DirectionGuard = Direction.Up;
+                //    // i++;
+                // }
+                // else
+                // {
+                //     guard.MoveGuard(newPositionGuard);
+                //    // i++;
+                // }
+
+                guard.MoveGuard(newPositionGuard, width, height);
+                
+                }
+                
+                     foreach (var guard in guards)
+                    {
+                        if (player.Pos.X == guard.Pos.X && player.Pos.Y == guard.Pos.Y)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("GAME OVER");
+                            Console.WriteLine($"Score: {score}");
+                            return;
+                        }
+                    }
+
                 foreach (var treasure in treasures)
                 {
                     if (!treasure.Collected && player.Pos.X == treasure.Pos.X && player.Pos.Y == treasure.Pos.Y)
@@ -101,6 +143,8 @@ else if ((key == ConsoleKey.D || key == ConsoleKey.RightArrow))  player.Directio
                     Console.Write("@");
                 else if (treasures.Any(t => !t.Collected && t.Pos.X == x && t.Pos.Y == y))
                     Console.Write("$");
+                else if (guards.Any(g => g.Pos.X == x && g.Pos.Y == y))
+                    Console.Write("!");
                 else
                     Console.Write(" ");
             }
@@ -129,6 +173,29 @@ else if ((key == ConsoleKey.D || key == ConsoleKey.RightArrow))  player.Directio
             treasures.Add(new Treasure(x, y));
         }
       
+    }
+    void SpawnGuards()
+    {
+
+        // guards.Add(new HorizontalGuard(x, y));
+        // guards.Add(new VerticalGuard(x, y));
+        // guards.Add(new Guard(x, y));
+        while (guards.Count < 3)
+        {
+            int x = Random.Shared.Next(1, width - 1);
+            int y = Random.Shared.Next(1, height - 1);
+
+            if (x == player.Pos.X && y == player.Pos.Y)
+                continue;
+            if (treasures.Any(t => t.Pos.X == x && t.Pos.Y == y))
+                continue;
+            if (guards.Any(g => g.Pos.X == x && g.Pos.Y == y))
+                continue;
+
+            if (guards.Count == 0) guards.Add(new HorizontalGuard(x, y));
+            else if (guards.Count == 1) guards.Add(new VerticalGuard(x, y));
+            else guards.Add(new Guard(x, y));
+     }
     }
 }
 
