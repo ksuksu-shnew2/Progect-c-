@@ -20,49 +20,38 @@ public class Game
            {
                 ReadInput();
 
-                Position newPositionPlayer = new Position(player.Pos.X, player.Pos.Y);
+                // Position newPositionPlayer = new Position(player.Pos.X, player.Pos.Y);
 
-                if (player.Direction == Direction.Right) newPositionPlayer.X++;
-                else if (player.Direction == Direction.Left) newPositionPlayer.X--;
-                else if (player.Direction == Direction.Up) newPositionPlayer.Y--;
-                else if (player.Direction == Direction.Down) newPositionPlayer.Y++;
+                // if (player.Direction == Direction.Right) newPositionPlayer.X++;
+                // else if (player.Direction == Direction.Left) newPositionPlayer.X--;
+                // else if (player.Direction == Direction.Up) newPositionPlayer.Y--;
+                // else if (player.Direction == Direction.Down) newPositionPlayer.Y++;
 
               
                 
-                if (IsWallCollision(newPositionPlayer))
+                // if (IsWallCollision(newPositionPlayer))
+                // {
+                //     Console.Clear();
+                //     Console.WriteLine("GAME OVER");
+                //     Console.WriteLine($"Score: {score}");
+                //     return;
+                // }
+                // else
+                // {
+                if (!player.Move(width, height))
                 {
                     Console.Clear();
                     Console.WriteLine("GAME OVER");
                     Console.WriteLine($"Score: {score}");
                     return;
                 }
-                else
-                {
-                player.Move(newPositionPlayer);
                 move++;
-                }
+                //}
            
                 //int i = 0;
-                foreach (var guard in guards)
+                foreach (IMovable movable in guards)
                 {
-                
-                // if(IsWallCollision(newPositionGuard))
-                // {
-                //     if (guard.DirectionGuard == Direction.Right) guard.DirectionGuard = Direction.Left;
-                //     else if (guard.DirectionGuard == Direction.Left) guard.DirectionGuard = Direction.Right;
-                //     else if (guard.DirectionGuard == Direction.Up) guard.DirectionGuard = Direction.Down;
-                //     else if (guard.DirectionGuard == Direction.Down) guard.DirectionGuard = Direction.Up;
-                //    // i++;
-                // }
-                // else
-                // {
-                //     guard.MoveGuard(newPositionGuard);
-                //    // i++;
-                // }
-
-                //guard.MoveGuard(newPositionGuard, width, height);
-
-                guard.MoveGuard(width, height);
+                movable.Move(width, height);
                 
                 }
                 

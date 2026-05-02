@@ -7,7 +7,7 @@ public class VerticalGuard : Guard
         DirectionGuard = Direction.Down;
     }
 
-    public override void MoveGuard(int width, int height)
+    public override bool Move(int width, int height)
     {
         Position newPositionGuard = new Position(Pos.X, Pos.Y);
 
@@ -28,6 +28,7 @@ public class VerticalGuard : Guard
         else
         {
             Pos = newPositionGuard;
-        }       
+        }      
+        return true; 
     }
 }

@@ -1,11 +1,11 @@
 namespace TreasureCollector;
 
-public class Guard
+public class Guard : IMovable
 {
     public Position Pos;
     public Direction DirectionGuard = Direction.Right;
 
-    public Guard(int x, int y)
+    public Guard(int x, int y) 
     {
         Pos = new Position(x, y);
 
@@ -15,7 +15,7 @@ public class Guard
         // else if (DirectionGuard == Direction.Down) Pos.Y++;
     }
 
-    public virtual void MoveGuard(int width, int height)
+    public virtual bool Move(int width, int height)
     {
         Position newPositionGuard = new Position(Pos.X, Pos.Y);
 
@@ -27,7 +27,7 @@ public class Guard
         bool hitWall = newPositionGuard.X == 0 || newPositionGuard.X == width - 1 
                 || newPositionGuard.Y == 0 || newPositionGuard.Y == height - 1;
 
-        if (hitWall)
+        if (hitWall) 
         {
             if (DirectionGuard == Direction.Right) DirectionGuard = Direction.Left;
             else if (DirectionGuard == Direction.Left) DirectionGuard = Direction.Right;
@@ -38,7 +38,7 @@ public class Guard
         {
             Pos = newPositionGuard;
         }
-              
+         return true;     
     }
 }
 

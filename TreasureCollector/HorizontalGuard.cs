@@ -9,7 +9,7 @@ public class HorizontalGuard: Guard
     {
         DirectionGuard = Direction.Right;
     }
-    public override void MoveGuard(int width, int height)
+    public override bool Move(int width, int height)
     {
         Position newPositionGuard = new Position(Pos.X, Pos.Y);
 
@@ -28,6 +28,7 @@ public class HorizontalGuard: Guard
         else
         {
             Pos = newPositionGuard;
-        }    
+        }   
+        return true; 
     }
 }
