@@ -3,8 +3,8 @@ namespace GtaCar;
 public class Game
 {
     public Player player = new Player(10, 4);
-    public List<Car> cars;
-    public List<Police> polices;
+    public List<Car> cars = new List<Car>();
+    public List<Police> polices = new List<Police>();
     public Garage garage;
     public int width = 40;
     public int height = 15;  
@@ -14,46 +14,53 @@ public class Game
     public void Start()
     {
         SpawnAll();
-        Draw();
+        //Draw();
 
-        // while (true)
-        // {
-        //     ReadInput();
-        //     Player.Move(Width, Height);
-        //     foreach (var police in Polices)
-        //     {
-        //         police.Move(Player, Width, Height);
-        //         if (Player.Pos.X == police.Pos.X && Player.Pos.Y == police.Pos.Y)
-        //         {
-        //             Console.Clear();
-        //             Console.WriteLine("GAME OVER");
-        //             return;
-        //         }
-        //     }
-        //     foreach (var car in Cars)
-        //     {
-        //         car.TrySteal(Player);
-        //     }
-        //     Garage.TryAccept(Player);
-       // }
+            while (true)
+            {
+            if (ReadInput())
+            {
+                player.Move(width, height);
+            }
+            foreach (var police in polices)
+            {
+                police.Move(player, width, height);
+                if (player.Pos.X == police.Pos.X && player.Pos.Y == police.Pos.Y)
+                {
+                    Console.Clear();
+                    Console.WriteLine("GAME OVER");
+                    return;
+                }
+            }
+            
+            Draw();
+            if (player.CarsDelivered >= 3)
+            {
+                Console.Clear();
+                Console.WriteLine("ПОБЕДА!");
+                Console.WriteLine($"Денег: {player.Money}");
+                return;
+            }
+       }
     }
 
-    void ReadInput()
+    bool ReadInput()
     {
         // if (Console.ReadKey(true).Key == ConsoleKey.Escape)
         //     return;
 
         ConsoleKey key = Console.ReadKey(true).Key;
 
-            if (key == ConsoleKey.W || key == ConsoleKey.UpArrow) player.Direction = Direction.Up;
+            if (key == ConsoleKey.W || key == ConsoleKey.UpArrow) {player.Direction = Direction.Up; return true;}
 
-            else if ((key == ConsoleKey.S || key == ConsoleKey.DownArrow)) player.Direction = Direction.Down;
+            else if ((key == ConsoleKey.S || key == ConsoleKey.DownArrow)) {player.Direction = Direction.Down; return true;}
 
-            else if ((key == ConsoleKey.A || key == ConsoleKey.LeftArrow)) player.Direction = Direction.Left;
+            else if ((key == ConsoleKey.A || key == ConsoleKey.LeftArrow)) {player.Direction = Direction.Left; return true;}
 
-            else if ((key == ConsoleKey.D || key == ConsoleKey.RightArrow))  player.Direction = Direction.Right;
-            //else if (key == ConsoleKey.E) CheckInteraction();
-            else if (key == ConsoleKey.Escape) return;
+            else if ((key == ConsoleKey.D || key == ConsoleKey.RightArrow))  {player.Direction = Direction.Right; return true;}
+            else if (key == ConsoleKey.E) { CheckInteraction(); return false; }
+            else if (key == ConsoleKey.Escape) return false;
+            else return false;
     }
 
     void Draw()
@@ -68,22 +75,24 @@ public class Game
                 if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
                     Console.Write("#");
                 else if (x == player.Pos.X && y == player.Pos.Y)
-                    Console.Write("@");
-                else if (x == player.Pos.X && y == player.Pos.Y && player.HasCar == true)
-                    Console.Write("*");
+                {
+                    if (player.HasCar) Console.Write("*");
+                     else Console.Write("@");
+                }
                 else if (x == garage.Pos.X && y == garage.Pos.Y)
                     Console.Write("G");
-                else if (cars.Any(t => t.Pos.X == x && t.Pos.Y == y))
-                    Console.Write("$");
+                else if (cars.Any(t =>!t.IsStolen && t.Pos.X == x && t.Pos.Y == y))
+                    Console.Write("C");
                 else if (polices.Any(g => g.Pos.X == x && g.Pos.Y == y))
-                    Console.Write("!");
+                    {var police = polices.First(g => g.Pos.X == x && g.Pos.Y == y);
+                        Console.Write(police.IsChasing ? "!" : "P");}
                 else
-                    Console.Write(" ");
+                    Console.Write(" "); 
             }
             Console.WriteLine();
            
         }
-         Console.WriteLine($"Score: {score} | Moves: {move}");
+         Console.WriteLine($"Деньги: {player.Money} | Сдано: {player.CarsDelivered}/3 | E - угнать/сдать");
     }
 
     void SpawnAll()
@@ -124,6 +133,27 @@ public class Game
             cars.Add(new Car(x, y));
         }
 
+    }
+
+    void CheckInteraction()
+    {
+        if
+            (player.HasCar)
+            {
+                garage.TryAccept(player);
+               
+            }
+        else
+        {
+        foreach (var car in cars)
+        {
+            car.TrySteal(player);
+            if (player.HasCar)
+                break;
+        
+        }
+        }
+       // garage.TryAccept(player);
     }
 
 }

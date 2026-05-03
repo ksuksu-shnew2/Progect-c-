@@ -1,2 +1,13 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace GtaCar;
+
+
+class Program
+{
+    static void Main()
+    {
+        Console.Clear();
+        Game game = new Game();
+        game.Start();
+
+    }
+}

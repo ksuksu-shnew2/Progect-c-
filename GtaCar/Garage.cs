@@ -11,7 +11,7 @@ public class Garage
 
     public void TryAccept(Player player)
     {
-        if (player.Pos.X == Pos.X && player.Pos.Y == Pos.Y && player.HasCar)
+        if (Math.Abs(player.Pos.X - Pos.X) <= 1 && Math.Abs(player.Pos.Y - Pos.Y) <= 1 && player.HasCar)
         {
             player.DeliverCar();
         }

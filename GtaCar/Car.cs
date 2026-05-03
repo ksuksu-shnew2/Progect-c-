@@ -12,7 +12,7 @@ public class Car
 
     public void TrySteal(Player player)
     {
-        if (player.Pos.X == Pos.X && player.Pos.Y == Pos.Y && !IsStolen)
+        if (Math.Abs(player.Pos.X - Pos.X) <= 1 && Math.Abs(player.Pos.Y - Pos.Y) <= 1 && !IsStolen)
         {
             IsStolen = true;
             player.TakeCar();

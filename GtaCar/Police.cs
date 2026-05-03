@@ -13,7 +13,7 @@ public class Police
     }
     public void Move(Player player, int width, int height)
     {
-        if (Math.Abs(player.Pos.X - Pos.X) <= DetectionRadius && Math.Abs(player.Pos.Y - Pos.Y) <= DetectionRadius)
+        if (Math.Abs(player.Pos.X - Pos.X) + Math.Abs(player.Pos.Y - Pos.Y) <= DetectionRadius)
         {
             IsChasing = true;
         }
