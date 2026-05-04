@@ -9,31 +9,29 @@ public class Player
     public int CarsDelivered = 0;
     public int Speed = 1;
 
-
-    public Player(int x, int y) 
+    public Player(int x, int y)
     {
         Pos = new Position(x, y);
-
     }
 
     public bool Move(int width, int height)
     {
         Position newPosition = new Position(Pos.X, Pos.Y);
-        Speed = HasCar ? 2 : 1; 
-        
-        if (Direction == Direction.Right) newPosition.X = newPosition.X + Speed;
-        else if (Direction == Direction.Left) newPosition.X = newPosition.X - Speed;
-        else if (Direction == Direction.Up) newPosition.Y = newPosition.Y - Speed;
-        else if (Direction == Direction.Down) newPosition.Y = newPosition.Y + Speed;
-        
+        Speed = HasCar ? 2 : 1;
 
-        bool hitWall = newPosition.X == 0 || newPosition.X == width - 1 
-                || newPosition.Y == 0 || newPosition.Y == height - 1;
+        if (Direction == Direction.Right) newPosition.X += 1;
+        else if (Direction == Direction.Left) newPosition.X -= 1;
+        else if (Direction == Direction.Up) newPosition.Y -= 1;
+        else if (Direction == Direction.Down) newPosition.Y += 1;
+
+        bool hitWall = newPosition.X <= 0 || newPosition.X >= width - 1
+                    || newPosition.Y <= 0 || newPosition.Y >= height - 1;
         if (hitWall) return false;
-        
-            Pos = newPosition;
-            return true;
+
+        Pos = newPosition;
+        return true;
     }
+
     public void TakeCar()
     {
         HasCar = true;
