@@ -8,10 +8,33 @@ public class Player
     public int Money = 0;
     public int CarsDelivered = 0;
     public int Speed = 1;
+    public int WantedLevel = 0;
 
     public Player(int x, int y)
     {
         Pos = new Position(x, y);
+    }
+
+    public void IncreaseWanted()
+    {
+
+        if (WantedLevel < 3)
+        {   
+            WantedLevel++;
+        }
+    
+
+    }
+
+      public void DecreaseWanted()
+    {
+
+        if (WantedLevel < 4 && WantedLevel > 0) 
+        {   
+            WantedLevel--;
+        }
+    
+
     }
 
     public bool Move(int width, int height)

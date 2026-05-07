@@ -13,6 +13,7 @@ public class Game
     public void Start()
     {
         SpawnAll();
+        UpdatePolice();
         Draw();
 
         while (true)
@@ -111,7 +112,8 @@ public class Game
             }
             Console.WriteLine();
         }
-        Console.WriteLine($"Деньги: {player.Money} | Сдано: {player.CarsDelivered}/3 | E - угнать/сдать");
+        string wanted = new string('★', player.WantedLevel) + new string('☆', 3 - player.WantedLevel);
+        Console.WriteLine($"Деньги: {player.Money} | Сдано: {player.CarsDelivered}/3 | Розыск: {wanted} | E - угнать/сдать");   
     }
 
     void SpawnAll()
@@ -120,17 +122,17 @@ public class Game
         int y = Random.Shared.Next(1, height - 1);
         garage = new Garage(x, y);
 
-        while (polices.Count < 2)
-        {
-            x = Random.Shared.Next(1, width - 1);
-            y = Random.Shared.Next(1, height - 1);
+        // while (polices.Count < player.WantedLevel)
+        // {
+        //     x = Random.Shared.Next(1, width - 1);
+        //     y = Random.Shared.Next(1, height - 1);
 
-            if (x == player.Pos.X && y == player.Pos.Y) continue;
-            if (garage.Pos.X == x && garage.Pos.Y == y) continue;
-            if (polices.Any(p => p.Pos.X == x && p.Pos.Y == y)) continue;
+        //     if (x == player.Pos.X && y == player.Pos.Y) continue;
+        //     if (garage.Pos.X == x && garage.Pos.Y == y) continue;
+        //     if (polices.Any(p => p.Pos.X == x && p.Pos.Y == y)) continue;
 
-            polices.Add(new Police(x, y));
-        }
+        //     polices.Add(new Police(x, y));
+        // }
 
         while (cars.Count < 4)
         {
@@ -146,13 +148,45 @@ public class Game
         }
     }
 
+    
+    void UpdatePolice()
+        {
+            polices.Clear();  // очищаем список
+
+            if (player.WantedLevel == 0) return;  // никого нет
+
+            int count = player.WantedLevel;       // 1, 2 или 3 полицейских
+            int radius = player.WantedLevel == 1 ? 5 : player.WantedLevel == 2 ? 8 : 12;
+
+            // добавляй полицейских пока не наберётся нужное количество
+            while (polices.Count < count)
+            {
+                // случайная позиция
+                // проверки на игрока, гараж, машины, других полицейских
+              
+                int x = Random.Shared.Next(1, width - 1);
+                int y = Random.Shared.Next(1, height - 1);
+
+                if (x == player.Pos.X && y == player.Pos.Y) continue;
+                if (garage.Pos.X == x && garage.Pos.Y == y) continue;
+                if (polices.Any(p => p.Pos.X == x && p.Pos.Y == y)) continue;
+                if (garage.Pos.X == x && garage.Pos.Y == y) continue;
+                if (cars.Any(c => c.Pos.X == x && c.Pos.Y == y)) continue;
+                  Police p = new Police(x, y);
+                p.DetectionRadius = radius;
+                polices.Add(p);
+            }
+        }
+    
+
     void CheckInteraction()
     {
         if (player.HasCar)
         {
             int delivered = player.CarsDelivered;
             garage.TryAccept(player);
-
+            //player.DecreaseWanted();
+            UpdatePolice();
             // Если действительно сдали — респауним угнанную машину в новом месте.
             if (player.CarsDelivered > delivered)
             {
@@ -165,6 +199,7 @@ public class Game
             foreach (var car in cars)
             {
                 car.TrySteal(player);
+                UpdatePolice();
                 if (player.HasCar) break;
             }
         }
