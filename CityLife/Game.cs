@@ -17,15 +17,14 @@ public class Game
             if (moved)
                 player.Move(width, height);
 
-            Console.SetCursorPosition(0, 22);  // ← сюда
   
-            //     if (player.IsWorking)
-            // {
-            //     var job = player.CurrentJob;
-            //     job.Update(player);
-            //     if (job.IsComplete)
-            //         player.CurrentJob = null;
-            // }
+                if (player.IsWorking)
+            {
+                var job = player.CurrentJob;
+                job.Update(player);
+                if (job.IsComplete)
+                    player.CurrentJob = null;
+            }
 
             Draw();
 
@@ -79,11 +78,11 @@ public class Game
     //     Console.SetCursorPosition(0, 22);
     // Console.WriteLine($"IsWorking: {player.IsWorking}");
 
-        if (player.IsWorking) //player.CurrentJob.Update(player);
-        {var job = player.CurrentJob;
-                job.Update(player);
-               if (job.IsComplete)
-                    player.CurrentJob = null;}
+        if (player.IsWorking) player.CurrentJob.Update(player);
+        // {var job = player.CurrentJob;
+        //         job.Update(player);
+        //        if (job.IsComplete)
+        //             player.CurrentJob = null;}
  
         else
         {
