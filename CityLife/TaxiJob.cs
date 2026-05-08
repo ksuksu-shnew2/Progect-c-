@@ -38,5 +38,12 @@ public class TaxiJob : IJob
             }
         }
     }
+    public List<(Position, char)> GetSymbols()
+        {
+            if (!PassengerPickedUp)
+                return new List<(Position, char)> { (PassengerPos, 'P') };
+            else
+                return new List<(Position, char)> { (DestinationPos, 'X') };
+        }
 
 }

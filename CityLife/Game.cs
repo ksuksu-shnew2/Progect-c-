@@ -78,15 +78,15 @@ public class Game
     //     Console.SetCursorPosition(0, 22);
     // Console.WriteLine($"IsWorking: {player.IsWorking}");
 
-        if (player.IsWorking) player.CurrentJob.Update(player);
+        if (!player.IsWorking) 
         // {var job = player.CurrentJob;
         //         job.Update(player);
         //        if (job.IsComplete)
         //             player.CurrentJob = null;}
  
-        else
+        //else
         {
-            var building = buildings.FirstOrDefault(b => Math.Abs(b.Pos.X - player.Pos.X) <= 1 && Math.Abs(b.Pos.Y - player.Pos.Y) <= 1);;
+            var building = buildings.FirstOrDefault(b => Math.Abs(b.Pos.X - player.Pos.X) <= 1 && Math.Abs(b.Pos.Y - player.Pos.Y) <= 1);
             
         //     Console.SetCursorPosition(0, 23);
         // Console.WriteLine($"Building: {building?.Type} | PlayerPos: {player.Pos.X},{player.Pos.Y}");
@@ -129,51 +129,58 @@ public class Game
     {
         Console.Clear();
         for (int y = 0; y < height; y++)
-{
-    for (int x = 0; x < width; x++)
-    {
-        if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
-            Console.Write("#");
-        
-        else if (x == player.Pos.X && y == player.Pos.Y)
-            Console.Write("@");
-        
-        else if (player.CurrentJob is TaxiJob taxi
-                 && !taxi.PassengerPickedUp
-                 && x == taxi.PassengerPos.X && y == taxi.PassengerPos.Y)
-            Console.Write("P");
-        
-        else if (player.CurrentJob is TaxiJob taxi2
-                 && taxi2.PassengerPickedUp
-                 && x == taxi2.DestinationPos.X && y == taxi2.DestinationPos.Y)
-            Console.Write("X");
-        
-        else if (player.CurrentJob is ShopJob shop
-                && !shop.HasItem
-                 && x == shop.WarehousePos.X && y == shop.WarehousePos.Y)
-            Console.Write("W");
-        
-        else if (player.CurrentJob is ShopJob shop2
-                //&& !shop2.HasItem
-                 && x == shop2.CashierPos.X && y == shop2.CashierPos.Y)
-            Console.Write("K");
-        
-        else if (player.CurrentJob is DeliveryJob delivery
-                 && !delivery.PackagePickedUp
-                 && x == delivery.PackagePos.X && y == delivery.PackagePos.Y)
-            Console.Write("B");
-        
-        else if (player.CurrentJob is DeliveryJob delivery2
-                 && delivery2.PackagePickedUp
-                 && x == delivery2.AddressPos.X && y == delivery2.AddressPos.Y)
-            Console.Write("A");
-        
-        else if (buildings.Any(b => b.Pos.X == x && b.Pos.Y == y))
-            Console.Write(buildings.First(b => b.Pos.X == x && b.Pos.Y == y).Symbol);
-        
-        else
-            Console.Write(" ");
-            }
+        {
+            for (int x = 0; x < width; x++)
+                {
+                    if (x == 0 || x == width - 1 || y == 0 || y == height - 1)
+                        Console.Write("#");
+                    
+                    else if (x == player.Pos.X && y == player.Pos.Y)
+                        Console.Write("@");
+
+                    else if (player.CurrentJob != null &&
+                        player.CurrentJob.GetSymbols().Any(s => s.pos.X == x && s.pos.Y == y))
+                            {
+                                var symbol = player.CurrentJob.GetSymbols().First(s => s.pos.X == x && s.pos.Y == y);
+                                Console.Write(symbol.symbol);
+                            }
+                    
+                    // else if (player.CurrentJob is TaxiJob taxi
+                    //         && !taxi.PassengerPickedUp
+                    //         && x == taxi.PassengerPos.X && y == taxi.PassengerPos.Y)
+                    //     Console.Write("P");
+                    
+                    // else if (player.CurrentJob is TaxiJob taxi2
+                    //         && taxi2.PassengerPickedUp
+                    //         && x == taxi2.DestinationPos.X && y == taxi2.DestinationPos.Y)
+                    //     Console.Write("X");
+                    
+                    // else if (player.CurrentJob is ShopJob shop
+                    //         && !shop.HasItem
+                    //         && x == shop.WarehousePos.X && y == shop.WarehousePos.Y)
+                    //     Console.Write("W");
+                    
+                    // else if (player.CurrentJob is ShopJob shop2
+                    //         //&& !shop2.HasItem
+                    //         && x == shop2.CashierPos.X && y == shop2.CashierPos.Y)
+                    //     Console.Write("K");
+                    
+                    // else if (player.CurrentJob is DeliveryJob delivery
+                    //         && !delivery.PackagePickedUp
+                    //         && x == delivery.PackagePos.X && y == delivery.PackagePos.Y)
+                    //     Console.Write("B");
+                    
+                    // else if (player.CurrentJob is DeliveryJob delivery2
+                    //         && delivery2.PackagePickedUp
+                    //         && x == delivery2.AddressPos.X && y == delivery2.AddressPos.Y)
+                    //     Console.Write("A");
+                    
+                    else if (buildings.Any(b => b.Pos.X == x && b.Pos.Y == y))
+                        Console.Write(buildings.First(b => b.Pos.X == x && b.Pos.Y == y).Symbol);
+                    
+                    else
+                        Console.Write(" ");
+                }
             Console.WriteLine();
         }
         Console.WriteLine($"Деньги: {player.Money} | Цель: 5000 | F - взять работу");

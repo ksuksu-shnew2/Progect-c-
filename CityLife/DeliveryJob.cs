@@ -38,4 +38,12 @@ public class DeliveryJob : IJob
         }
         //moves++;
     }
+
+    public List<(Position, char)> GetSymbols()
+        {
+            if (!PackagePickedUp)
+                return new List<(Position, char)> { (PackagePos, 'B') };
+            else
+                return new List<(Position, char)> { (AddressPos, 'A') };
+        }
 }

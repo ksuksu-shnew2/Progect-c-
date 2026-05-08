@@ -9,7 +9,7 @@ public class ShopJob : IJob
     public int ItemsDelivered = 0;
     public int TotalItems = 3;
     public bool HasItem = false;
-    int width;   // ← добавь
+    int width;   
     int height;
     
 
@@ -53,4 +53,11 @@ public class ShopJob : IJob
             }
         }
     }
+    public List<(Position, char)> GetSymbols()
+        {
+            var symbols = new List<(Position, char)>();
+            if (!HasItem) symbols.Add((WarehousePos, 'W'));
+            symbols.Add((CashierPos, 'K'));
+            return symbols;
+        }
 }
