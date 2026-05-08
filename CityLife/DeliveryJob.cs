@@ -32,7 +32,7 @@ public class DeliveryJob : IJob
             if (player.Pos.X == AddressPos.X && player.Pos.Y == AddressPos.Y)
             {
                 IsComplete = true;
-                reward = Math.Max(100, 500 - moves * 5);
+                reward = Math.Max(300, 750 - moves * 5);
                 player.FinishJob(reward);
             }
         }

@@ -15,7 +15,7 @@ public class TaxiJob : IJob
         PassengerPos = new Position(Random.Shared.Next(1, width - 1), Random.Shared.Next(1, height - 1));
         DestinationPos = new Position(Random.Shared.Next(1, width - 1), Random.Shared.Next(1, height - 1));
 
-        reward = (Math.Abs(PassengerPos.X - DestinationPos.X) + Math.Abs(PassengerPos.Y - DestinationPos.Y)) * 10;
+        reward = (Math.Abs(PassengerPos.X - DestinationPos.X) + Math.Abs(PassengerPos.Y - DestinationPos.Y)) * 30;
     }
     
     public void Update(Player player)

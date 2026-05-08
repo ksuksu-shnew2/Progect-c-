@@ -7,12 +7,16 @@ public class ShopJob : IJob
     public bool IsComplete { get; private set; } = false;
     int reward = 300;
     public int ItemsDelivered = 0;
-    int TotalItems = 3;
+    public int TotalItems = 3;
     public bool HasItem = false;
+    int width;   // ← добавь
+    int height;
     
 
     public ShopJob(int width, int height)
     {
+        this.width = width;
+        this.height = height;
         WarehousePos = new Position(Random.Shared.Next(1, width - 1), Random.Shared.Next(1, height - 1));
         CashierPos = new Position(Random.Shared.Next(1, width - 1), Random.Shared.Next(1, height - 1));
     }
@@ -20,6 +24,9 @@ public class ShopJob : IJob
     public void Update(Player player)
     {
         if (IsComplete) return;
+
+    //         Console.SetCursorPosition(0, 21);
+    // Console.WriteLine($"P:{player.Pos.X},{player.Pos.Y} W:{WarehousePos.X},{WarehousePos.Y} HasItem:{HasItem}    ");
 
         if (!HasItem)
         {
@@ -34,6 +41,10 @@ public class ShopJob : IJob
             {
                 ItemsDelivered++;
                 HasItem = false;
+                WarehousePos = new Position(
+                    Random.Shared.Next(1, width - 1), 
+                    Random.Shared.Next(1, height - 1)
+                );
                 if (ItemsDelivered >= TotalItems)
                 {
                     IsComplete = true;
