@@ -21,6 +21,11 @@ public class Gang
         if (AssignedDistrict != null)
         {
             AssignedDistrict.TryCapture(1, Owner.Player);
+
+            if (Pos.X < AssignedDistrict.Pos.X) Pos.X++;
+                else if (Pos.X > AssignedDistrict.Pos.X) Pos.X--;
+                else if (Pos.Y < AssignedDistrict.Pos.Y) Pos.Y++;
+                else if (Pos.Y > AssignedDistrict.Pos.Y) Pos.Y--;
         }
         else
         {
