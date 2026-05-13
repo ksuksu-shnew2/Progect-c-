@@ -42,12 +42,13 @@ public class Game
                 return;
             }
             ticks++;
-            if (ticks >= maxTicks)            {
+            if (ticks >= maxTicks)            
+            {
                 Console.WriteLine("ВЫ ПРОВАЛИЛИ ОГРАБЛЕНИЕ!");
                 return;
+            }
         }
     }
-}
     void ShowPlanning()
     {
         while (planningPhase)
