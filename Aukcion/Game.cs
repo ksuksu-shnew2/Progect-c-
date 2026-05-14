@@ -5,9 +5,17 @@ public class Game
    Player player = new Player();
    Auction auction = new Auction();
 
-    public void Start()
+    public void Start()1
    {
        Console.WriteLine("Добро пожаловать в аукцион!");
+       var keyMap = new Dictionary<ConsoleKey, int>
+            {
+                { ConsoleKey.D1, 0 }, { ConsoleKey.D2, 1 }, { ConsoleKey.D3, 2 },
+                { ConsoleKey.D4, 3 }, { ConsoleKey.D5, 4 }, { ConsoleKey.D6, 5 },
+                { ConsoleKey.D7, 6 }, { ConsoleKey.D8, 7 }, { ConsoleKey.D9, 8 },
+                { ConsoleKey.D0, 9 }
+            };
+
        while (true)
        {
         Console.Clear();
@@ -31,13 +39,7 @@ public class Game
                     return;
                 }
             var key = Console.ReadKey(true).Key;
-            var keyMap = new Dictionary<ConsoleKey, int>
-            {
-                { ConsoleKey.D1, 0 }, { ConsoleKey.D2, 1 }, { ConsoleKey.D3, 2 },
-                { ConsoleKey.D4, 3 }, { ConsoleKey.D5, 4 }, { ConsoleKey.D6, 5 },
-                { ConsoleKey.D7, 6 }, { ConsoleKey.D8, 7 }, { ConsoleKey.D9, 8 },
-                { ConsoleKey.D0, 9 }
-            };
+            
 
             if (keyMap.TryGetValue(key, out int index) && index < available.Count)
                 RunAuction(available[index]);
