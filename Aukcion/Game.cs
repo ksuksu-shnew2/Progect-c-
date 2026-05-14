@@ -21,7 +21,7 @@ public class Game
                 Console.WriteLine($"{i + 1}. {available[i].Name} - {available[i].StartPrice}$");
             }
            Console.WriteLine();
-           Console.WriteLine("Выбери лот (1/2/3/4/5/6/7/8/9) | Q - выход");
+           Console.WriteLine("Выбери лот (1/2/3/4/5/6/7/8/9) | Q - выход | 0 - выбрать последний лот");
 
            
 
@@ -76,6 +76,12 @@ public class Game
             {
         
                     RunAuction(player.AvailableLots[8]);
+                
+            }
+            else if (key == ConsoleKey.D0 && player.AvailableLots.Count > 9)
+            {
+        
+                    RunAuction(player.AvailableLots[9]);
                 
             }
             else if (key == ConsoleKey.Q)
