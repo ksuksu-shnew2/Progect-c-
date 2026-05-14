@@ -16,23 +16,30 @@ public class Bidder
 
     public int MakeBid(int currentPrice)
     {
-        if (!IsActive) return 0;
+         if (!IsActive) return 0;
+
+        // каждый покупатель с шансом 30% пасует просто так
+        if (Random.Shared.Next(1, 11) <= 3)
+        {
+            IsActive = false;
+            return -1;
+        }
 
         int bid = 0;
         switch (Strategy)
         {
             case BidStrategy.Aggressive:
-                bid = (int)(currentPrice * 1.2);
+                bid = (int)(currentPrice * 1.1);
                 break;
             case BidStrategy.Careful:
-                bid = (int)(currentPrice * 1.05);
+                bid = (int)(currentPrice * 1.03);
                 break;
             case BidStrategy.Random:
-                bid = (int)(currentPrice * (1 + Random.Shared.Next(5, 26) / 100.0));
+                bid = (int)(currentPrice * (1 + Random.Shared.Next(3, 12) / 100.0));
                 break;
         }
 
-        if (bid > Budget)
+        if (bid > Budget) 
         {
             IsActive = false;
             return -1;

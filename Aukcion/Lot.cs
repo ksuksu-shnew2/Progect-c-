@@ -6,6 +6,8 @@ public class Lot
     public int StartPrice;
     public bool IsSold;
     public int  FinalPrice;
+    public int Attempts = 0;
+    public int MaxAttempts = 3;
 
     public Lot(string name, int startPrice)
     {
@@ -19,5 +21,19 @@ public class Lot
     {
         IsSold = true;
         FinalPrice = price;
+    }
+
+    public void Withdraw()
+        {
+            IsSold = true; 
+        }
+
+    public void ReducePrice()
+    {
+        if (Attempts < MaxAttempts)
+        {
+            Attempts++;
+            StartPrice = (int)(StartPrice * 0.8); 
+        }
     }
 }

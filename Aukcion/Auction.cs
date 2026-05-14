@@ -3,19 +3,20 @@ namespace Aukcion;
 public class Auction
 {
      List<Bidder> Bidders = new List<Bidder>();
-    Bidder? Winner= null;
+    public Bidder? Winner= null;
     int CurrentPrice;
 
     public Auction()
     {
 
-        Bidders.Add(new Bidder("Артём", 5000, BidStrategy.Aggressive));
-        Bidders.Add(new Bidder("Макс", 3000, BidStrategy.Careful));
-        Bidders.Add(new Bidder("Лена", 4000, BidStrategy.Random));
+        Bidders.Add(new Bidder("Артём", 12000, BidStrategy.Aggressive));
+        Bidders.Add(new Bidder("Макс", 15000, BidStrategy.Careful));
+        Bidders.Add(new Bidder("Лена", 13000, BidStrategy.Random));
     }
 
-    public int Run(Lot lot)
+    public int Run(Lot lot,double reputationBonus)
     {
+        
         foreach (var b in Bidders) b.IsActive = true;
         CurrentPrice = lot.StartPrice;
 
@@ -33,9 +34,20 @@ public class Auction
                 }
             }
         }
-
+        
         Winner = Bidders.FirstOrDefault(b => b.IsActive);
-        lot.Sell(CurrentPrice);
-        return CurrentPrice;
+        if (Winner == null)
+        {
+            // никто не купил — возвращаем стартовую цену
+            Console.WriteLine("Никто не сделал ставку — лот не продан.");
+            return 0; 
+        }
+        else
+        {
+            lot.Sell(CurrentPrice);
+            Winner.Budget -= CurrentPrice;  
+        }
+        
+        return (int)(CurrentPrice * reputationBonus);
     }
 }

@@ -11,7 +11,7 @@ public class Game
        while (true)
        {
         Console.Clear();
-        Console.WriteLine($"{player.Balance}");
+        Console.WriteLine($"Баланс: {player.Balance}$ | Репутация: {player.Reputation}");
         
 
            Console.WriteLine("Доступные лоты:");
@@ -21,7 +21,7 @@ public class Game
                 Console.WriteLine($"{i + 1}. {available[i].Name} - {available[i].StartPrice}$");
             }
            Console.WriteLine();
-           Console.WriteLine("Выбери лот (1/2/3) | Q - выход");
+           Console.WriteLine("Выбери лот (1/2/3/4/5/6/7/8/9) | Q - выход");
 
            
 
@@ -46,6 +46,38 @@ public class Game
                     RunAuction(player.AvailableLots[2]);
                 
             }
+            else if (key == ConsoleKey.D4 && player.AvailableLots.Count > 3)
+            {
+        
+                    RunAuction(player.AvailableLots[3]);
+                
+            }
+            else if (key == ConsoleKey.D5 && player.AvailableLots.Count > 4)
+            {
+        
+                    RunAuction(player.AvailableLots[4]);
+                
+            }else if (key == ConsoleKey.D6 && player.AvailableLots.Count > 5)
+            {
+        
+                    RunAuction(player.AvailableLots[5]);
+                
+            }else if (key == ConsoleKey.D7 && player.AvailableLots.Count > 6)
+            {
+        
+                    RunAuction(player.AvailableLots[6]);
+                
+            }else if (key == ConsoleKey.D8 && player.AvailableLots.Count > 7)
+            {
+        
+                    RunAuction(player.AvailableLots[7]);
+                
+            }else if (key == ConsoleKey.D9 && player.AvailableLots.Count > 8)
+            {
+        
+                    RunAuction(player.AvailableLots[8]);
+                
+            }
             else if (key == ConsoleKey.Q)
             {
                 Console.WriteLine("Спасибо за игру!");
@@ -61,10 +93,25 @@ public class Game
         Console.Clear();
         Console.WriteLine($"Вы выбрали лот: {lot.Name} с стартовой ценой {lot.StartPrice}$");
         Console.WriteLine("Начинаем аукцион...");
-        int earned = auction.Run(lot);
-        Console.WriteLine($"Аукцион завершен! Лот продан за {earned}$");
-        //player.Balance -= earned;
+        int earned = auction.Run(lot, player.ReputationBonus);
+        if (earned == 0)
+            {lot.ReducePrice();
+            if (lot.Attempts >= lot.MaxAttempts)
+                {
+                Console.WriteLine($"Лот {lot.Name} снят с торгов после {lot.MaxAttempts} попыток!");
+                lot.Withdraw();
+                }
+            else
+                {
+                Console.WriteLine($"Лот не продан, новая цена: {lot.StartPrice}$ | Попытка {lot.Attempts}/{lot.MaxAttempts}");
+                }}
+        else
+        {
         player.AddMoney(earned);
+        player.AddReputation(1);
+        Console.WriteLine($"Аукцион завершен! Лот продан за {earned}. Победитель: {auction.Winner?.Name ?? "Увы, лот не продан"}");
+        }
+        
         Console.WriteLine($"Ваш новый баланс: {player.Balance}$");
         Console.WriteLine("Нажмите любую клавишу, чтобы продолжить...");
         Console.ReadKey(true);
