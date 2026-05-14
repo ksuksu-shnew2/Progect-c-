@@ -31,59 +31,16 @@ public class Game
                     return;
                 }
             var key = Console.ReadKey(true).Key;
-            if (key == ConsoleKey.D1) 
-            { 
-                if (player.AvailableLots.Count > 0)
-                    RunAuction(player.AvailableLots[0]);
-            }
-            else if (key == ConsoleKey.D2 && player.AvailableLots.Count > 1)
+            var keyMap = new Dictionary<ConsoleKey, int>
             {
-                RunAuction(player.AvailableLots[1]);
-            }
-            else if (key == ConsoleKey.D3 && player.AvailableLots.Count > 2)
-            {
-        
-                    RunAuction(player.AvailableLots[2]);
-                
-            }
-            else if (key == ConsoleKey.D4 && player.AvailableLots.Count > 3)
-            {
-        
-                    RunAuction(player.AvailableLots[3]);
-                
-            }
-            else if (key == ConsoleKey.D5 && player.AvailableLots.Count > 4)
-            {
-        
-                    RunAuction(player.AvailableLots[4]);
-                
-            }else if (key == ConsoleKey.D6 && player.AvailableLots.Count > 5)
-            {
-        
-                    RunAuction(player.AvailableLots[5]);
-                
-            }else if (key == ConsoleKey.D7 && player.AvailableLots.Count > 6)
-            {
-        
-                    RunAuction(player.AvailableLots[6]);
-                
-            }else if (key == ConsoleKey.D8 && player.AvailableLots.Count > 7)
-            {
-        
-                    RunAuction(player.AvailableLots[7]);
-                
-            }else if (key == ConsoleKey.D9 && player.AvailableLots.Count > 8)
-            {
-        
-                    RunAuction(player.AvailableLots[8]);
-                
-            }
-            else if (key == ConsoleKey.D0 && player.AvailableLots.Count > 9)
-            {
-        
-                    RunAuction(player.AvailableLots[9]);
-                
-            }
+                { ConsoleKey.D1, 0 }, { ConsoleKey.D2, 1 }, { ConsoleKey.D3, 2 },
+                { ConsoleKey.D4, 3 }, { ConsoleKey.D5, 4 }, { ConsoleKey.D6, 5 },
+                { ConsoleKey.D7, 6 }, { ConsoleKey.D8, 7 }, { ConsoleKey.D9, 8 },
+                { ConsoleKey.D0, 9 }
+            };
+
+            if (keyMap.TryGetValue(key, out int index) && index < available.Count)
+                RunAuction(available[index]);
             else if (key == ConsoleKey.Q)
             {
                 Console.WriteLine("Спасибо за игру!");
@@ -105,7 +62,7 @@ public class Game
             if (lot.Attempts >= lot.MaxAttempts)
                 {
                 Console.WriteLine($"Лот {lot.Name} снят с торгов после {lot.MaxAttempts} попыток!");
-                lot.Withdraw();
+                lot.Sell(0);
                 }
             else
                 {

@@ -23,11 +23,6 @@ public class Lot
         FinalPrice = price;
     }
 
-    public void Withdraw()
-        {
-            IsSold = true; 
-        }
-
     public void ReducePrice()
     {
         if (Attempts < MaxAttempts)

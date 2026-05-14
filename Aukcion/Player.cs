@@ -36,10 +36,9 @@ public class Player
         get
         {
             if (Reputation >= 10) return 1.5;
-            if (Reputation >= 6 && Reputation <= 9) return 1.25;
-            if (Reputation >= 3 && Reputation <= 5) return 1.1;
-            if (Reputation >= 0 && Reputation <= 2) return 1.0;
-            return 0;
+            if (Reputation >= 6) return 1.25;
+            if (Reputation >= 3) return 1.1;
+            return 1.0;
         }
     }
 }
