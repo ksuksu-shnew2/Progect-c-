@@ -5,7 +5,7 @@ public class Game
    Player player = new Player();
    Auction auction = new Auction();
 
-    public void Start()1
+    public void Start()
    {
        Console.WriteLine("Добро пожаловать в аукцион!");
        var keyMap = new Dictionary<ConsoleKey, int>
